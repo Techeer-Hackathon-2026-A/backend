@@ -33,6 +33,30 @@ class Detector(ABC):
 
     # 일부 도구는 "취약점 발견" 시 exit code 1을 반환하므로 성공으로 본다.
     ok_exit_codes: tuple[int, ...] = (0, 1)
+    # 실패 시 에러 메시지에 덧붙일 안내 (도구별로 덮어쓴다)
+    failure_hint: str = ""
+
+    def _error_from_output(self) -> str:
+        """결과 JSON 의 errors 항목에서 원인을 꺼낸다. 없으면 빈 문자열."""
+        try:
+            data = json.loads(self.output_file.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            return ""
+        errors = data.get("errors") if isinstance(data, dict) else None
+        if not errors:
+            return ""
+        msgs = [str(e.get("message") or e.get("type") or e) if isinstance(e, dict) else str(e) for e in errors[:3]]
+        return " / ".join(msgs)[:500]
+
+    @staticmethod
+    def _error_from_stderr(text: str) -> str:
+        """stderr 에서 경고(Deprecation/UserWarning 등) 줄을 빼고 마지막 의미 있는 줄들만 남긴다."""
+        lines = [
+            ln
+            for ln in (text or "").splitlines()
+            if ln.strip() and "Warning" not in ln and not ln.lstrip().startswith("from pkg_resources")
+        ]
+        return "\n".join(lines[-3:])[-500:]
 
     def run(self, repo: Path) -> list[NormalizedFinding]:
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -46,7 +70,14 @@ class Detector(ABC):
             raise DetectorError(f"{self.name} 시간 초과") from e
 
         if proc.returncode not in self.ok_exit_codes:
-            raise DetectorError(f"{self.name} 실패 (exit {proc.returncode}): {proc.stderr[-500:]}")
+            detail = (
+                self._error_from_output()
+                or self._error_from_stderr(proc.stderr)
+                or self._error_from_stderr(proc.stdout)
+                or "(에러 메시지 없음)"
+            )
+            hint = f" | {self.failure_hint}" if self.failure_hint else ""
+            raise DetectorError(f"{self.name} 실패 (exit {proc.returncode}): {detail}{hint}")
         if not self.output_file.exists() or self.output_file.stat().st_size == 0:
             return []
         return self.parse(json.loads(self.output_file.read_text(encoding="utf-8")), repo)

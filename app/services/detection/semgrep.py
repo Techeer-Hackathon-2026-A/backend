@@ -4,7 +4,7 @@ from pathlib import Path
 
 from app.schemas.finding import Category, Location, NormalizedFinding, Severity
 from app.services.detection.base import Detector
-from app.services.detection.normalizer import make_fingerprint
+from app.services.detection.normalizer import make_fingerprint, to_relative
 from app.services.git.repo import EXCLUDED_DIRS
 
 SEVERITY_MAP = {"ERROR": Severity.HIGH, "WARNING": Severity.MEDIUM, "INFO": Severity.LOW}
@@ -16,9 +16,11 @@ RULESETS = ["p/owasp-top-ten", "p/cwe-top-25"]
 
 class SemgrepDetector(Detector):
     name = "semgrep"
+    failure_hint = "공개 룰셋(p/...)은 semgrep.dev 접속이 필요합니다. 워커 컨테이너의 외부 네트워크를 확인하세요"
 
     def command(self, repo: Path) -> list[str]:
-        cmd = ["semgrep", "scan", "--json", "--output", str(self.output_file), "--metrics=off", "--quiet"]
+        # --quiet 는 실패 원인(룰셋 다운로드 실패 등)까지 숨기므로 쓰지 않는다. 결과는 --output 파일로 받는다.
+        cmd = ["semgrep", "scan", "--json", "--output", str(self.output_file), "--metrics=off"]
         for ruleset in RULESETS:
             cmd += ["--config", ruleset]
         for d in EXCLUDED_DIRS:
@@ -29,7 +31,7 @@ class SemgrepDetector(Detector):
         findings = []
         for r in data.get("results", []):
             meta = r.get("extra", {}).get("metadata", {})
-            path = str(Path(r["path"]).relative_to(repo)) if Path(r["path"]).is_absolute() else r["path"]
+            path = to_relative(r["path"], repo)
             cwe = [c.split(":")[0].strip() for c in _as_list(meta.get("cwe"))]
             findings.append(
                 NormalizedFinding(
