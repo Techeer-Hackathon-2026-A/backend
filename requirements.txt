@@ -1,0 +1,21 @@
+# Web
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+pydantic==2.11.4
+pydantic-settings==2.9.1
+
+# DB
+sqlalchemy==2.0.40
+psycopg[binary]==3.2.9
+
+# Queue
+celery[redis]==5.5.2
+redis==5.2.1
+
+# External APIs
+anthropic==0.52.0
+httpx==0.28.1
+
+# Dev / Test
+pytest==8.3.5
+ruff==0.11.10

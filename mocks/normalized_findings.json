@@ -1,0 +1,122 @@
+[
+  {
+    "tool": "semgrep",
+    "category": "sast",
+    "rule_id": "python.lang.security.audit.formatted-sql-query.formatted-sql-query",
+    "title": "formatted-sql-query",
+    "message": "사용자 입력이 포맷 문자열로 SQL 쿼리에 들어갑니다. 파라미터 바인딩을 사용하세요.",
+    "severity": "high",
+    "location": {
+      "file_path": "app/routes/users.py",
+      "start_line": 24,
+      "end_line": 24,
+      "snippet": "@app.get('/users')\ndef get_user(name: str):\n    conn = get_conn()\n    cursor = conn.execute(f\"SELECT * FROM users WHERE name = '{name}'\")\n    return cursor.fetchall()"
+    },
+    "cwe": ["CWE-89: Improper Neutralization of Special Elements used in an SQL Command"],
+    "owasp": ["A03:2021 - Injection"],
+    "dependency": null,
+    "fingerprint": "mock-sqli-users-24",
+    "raw": {}
+  },
+  {
+    "tool": "semgrep",
+    "category": "sast",
+    "rule_id": "javascript.browser.security.insecure-document-method.insecure-document-method",
+    "title": "insecure-document-method",
+    "message": "innerHTML에 사용자 입력이 들어가 XSS가 발생할 수 있습니다.",
+    "severity": "medium",
+    "location": {
+      "file_path": "web/src/components/Comment.tsx",
+      "start_line": 12,
+      "end_line": 12,
+      "snippet": "export function renderComment(el: HTMLElement, text: string) {\n  el.innerHTML = text;\n}"
+    },
+    "cwe": ["CWE-79"],
+    "owasp": ["A03:2021 - Injection"],
+    "dependency": null,
+    "fingerprint": "mock-xss-comment-12",
+    "raw": {}
+  },
+  {
+    "tool": "gitleaks",
+    "category": "secret",
+    "rule_id": "openai-api-key",
+    "title": "하드코딩된 시크릿: openai-api-key",
+    "message": "OpenAI API 키가 코드에 하드코딩되어 있습니다.",
+    "severity": "high",
+    "location": {
+      "file_path": "web/src/lib/ai.ts",
+      "start_line": 3,
+      "end_line": 3,
+      "snippet": "const OPENAI_KEY = \"sk-p****9xQz\";"
+    },
+    "cwe": ["CWE-798"],
+    "owasp": ["A07:2021"],
+    "dependency": null,
+    "fingerprint": "mock-secret-ai-3",
+    "raw": {}
+  },
+  {
+    "tool": "semgrep",
+    "category": "sast",
+    "rule_id": "generic.secrets.security.detected-generic-api-key.detected-generic-api-key",
+    "title": "detected-generic-api-key",
+    "message": "API 키로 보이는 값이 하드코딩되어 있습니다.",
+    "severity": "medium",
+    "location": {
+      "file_path": "web/src/lib/ai.ts",
+      "start_line": 3,
+      "end_line": 3,
+      "snippet": "const OPENAI_KEY = \"sk-p****9xQz\";"
+    },
+    "cwe": ["CWE-798"],
+    "owasp": [],
+    "dependency": null,
+    "fingerprint": "mock-secret-ai-3",
+    "raw": {}
+  },
+  {
+    "tool": "osv-scanner",
+    "category": "sca",
+    "rule_id": "GHSA-jf85-cpcp-j695",
+    "title": "lodash 4.17.15 취약점",
+    "message": "Prototype Pollution in lodash",
+    "severity": "critical",
+    "location": {
+      "file_path": "web/package-lock.json",
+      "start_line": 1,
+      "end_line": null,
+      "snippet": null
+    },
+    "cwe": ["CWE-1321"],
+    "owasp": ["A06:2021"],
+    "dependency": {
+      "package": "lodash",
+      "ecosystem": "npm",
+      "installed_version": "4.17.15",
+      "fixed_version": "4.17.19",
+      "vuln_ids": ["GHSA-jf85-cpcp-j695", "CVE-2020-8203"]
+    },
+    "fingerprint": "mock-sca-lodash",
+    "raw": {}
+  },
+  {
+    "tool": "semgrep",
+    "category": "sast",
+    "rule_id": "python.lang.security.audit.subprocess-shell-true.subprocess-shell-true",
+    "title": "subprocess-shell-true",
+    "message": "shell=True로 외부 명령을 실행하면 명령어 삽입이 가능합니다.",
+    "severity": "high",
+    "location": {
+      "file_path": "tests/test_utils.py",
+      "start_line": 8,
+      "end_line": 8,
+      "snippet": "def test_ping():\n    subprocess.run(f\"ping {host}\", shell=True)"
+    },
+    "cwe": ["CWE-78"],
+    "owasp": ["A03:2021 - Injection"],
+    "dependency": null,
+    "fingerprint": "mock-cmdi-test-8",
+    "raw": {}
+  }
+]
