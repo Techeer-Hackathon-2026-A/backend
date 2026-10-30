@@ -167,3 +167,10 @@ def test_apply_changes_rejects_traversal_and_missing_code(origin):
 def test_commit_without_changes_fails(origin):
     with cloned_repo(origin["url"]) as repo, pytest.raises(GitOperationError):
         commit_and_push(repo.path, "security-fix/empty", "nothing")
+
+
+def test_clone_empty_repo_gives_clear_message(tmp_path):
+    bare = tmp_path / "empty.git"
+    subprocess.run(["git", "init", "-q", "--bare", str(bare)], check=True)
+    with pytest.raises(RepoNotFoundError, match="비어 있습니다"), cloned_repo(f"file://{bare}"):
+        pass

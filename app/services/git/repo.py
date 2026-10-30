@@ -116,12 +116,20 @@ def _authed_url(repo_url: str) -> str:
     return repo_url.replace("https://", f"https://x-access-token:{token}@", 1)
 
 
-def _git(*args: str, cwd: Path | None = None, timeout: int | None = None) -> str:
-    """git 실행. 실패하면 시크릿을 가린 GitOperationError로 변환한다."""
+def _first_error_line(stderr: str) -> str:
+    lines = [line.strip() for line in stderr.strip().splitlines() if line.strip()]
+    for line in lines:
+        if line.startswith(("fatal:", "error:")):
+            return line
+    return lines[0] if lines else ""
+
+
+def _git(*args: str, cwd: Path | None = None, timeout: int | None = None, allow_fail: bool = False) -> str:
+    """git 실행. 실패하면 시크릿을 가린 GitOperationError로 변환한다 (allow_fail이면 빈 문자열 반환)."""
     env = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}  # 인증 실패 시 입력 대기 방지
     cmd = ["git", *(["-C", str(cwd)] if cwd else []), *args]
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, env=env, check=True)
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, env=env, check=not allow_fail)
     except subprocess.TimeoutExpired as e:
         raise CloneTimeoutError("레포를 가져오는 데 시간이 너무 오래 걸립니다.") from e
     except subprocess.CalledProcessError as e:
@@ -130,10 +138,8 @@ def _git(*args: str, cwd: Path | None = None, timeout: int | None = None) -> str
             raise RepoNotFoundError("레포를 찾을 수 없거나 접근 권한이 없습니다.") from None
         if "Remote branch" in stderr or "couldn't find remote ref" in stderr:
             raise RepoNotFoundError("브랜치 또는 커밋을 찾을 수 없습니다.") from None
-        raise GitOperationError(
-            f"git {args[0]} 실패: {stderr.strip().splitlines()[-1] if stderr.strip() else ''}"
-        ) from None
-    return proc.stdout
+        raise GitOperationError(f"git {args[0]} 실패: {_first_error_line(stderr)}"[:300]) from None
+    return proc.stdout if proc.returncode == 0 else ""
 
 
 def _dir_size_mb(path: Path) -> float:
@@ -197,6 +203,8 @@ def cloned_repo(repo_url: str, branch: str | None = None, commit_sha: str | None
             if branch:
                 cmd += ["--branch", branch]
             _git(*cmd, _authed_url(repo_url), str(repo_dir), timeout=timeout)
+            if not _git("rev-parse", "--verify", "--quiet", "HEAD^{commit}", cwd=repo_dir, allow_fail=True).strip():
+                raise RepoNotFoundError("레포가 비어 있습니다. 코드를 푸시한 뒤 다시 시도하세요.")
             current_branch = _git("rev-parse", "--abbrev-ref", "HEAD", cwd=repo_dir).strip()
 
         if _dir_size_mb(repo_dir) > settings.max_repo_size_mb:

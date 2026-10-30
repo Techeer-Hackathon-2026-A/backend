@@ -6,7 +6,9 @@ ARG SEMGREP_VERSION=1.122.0
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1
+    PIP_NO_CACHE_DIR=1 \
+    SEMGREP_ENABLE_VERSION_CHECK=0 \
+    SEMGREP_SEND_METRICS=off
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git curl ca-certificates \
