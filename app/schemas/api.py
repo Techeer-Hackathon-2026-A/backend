@@ -100,6 +100,8 @@ class PullRequestOut(ORMModel):
     pr_url: str | None
     status: str
     created_at: datetime
+    fix_ids: list[int] = []
+    error_message: str | None = None
 
 
 class TaskAccepted(BaseModel):
