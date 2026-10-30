@@ -72,7 +72,7 @@ class SecurityReport(BaseModel):
     total: int
     by_severity: dict[str, int]
     by_category: dict[str, int]
-    owasp_matrix: dict[str, int]  # {"A01:2021-Broken Access Control": 3, ...}
+    owasp_matrix: dict[str, int]  # {"A05:2025": 3, ...}
     top_findings: list[FindingOut]
 
 
@@ -100,6 +100,8 @@ class PullRequestOut(ORMModel):
     pr_url: str | None
     status: str
     created_at: datetime
+    fix_ids: list[int] = []
+    error_message: str | None = None
 
 
 class TaskAccepted(BaseModel):

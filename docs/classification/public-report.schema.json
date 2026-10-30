@@ -1,0 +1,470 @@
+{
+  "$defs": {
+    "Classification": {
+      "additionalProperties": false,
+      "properties": {
+        "cwe_ids": {
+          "items": {
+            "pattern": "^CWE-[1-9][0-9]*$",
+            "type": "string"
+          },
+          "title": "Cwe Ids",
+          "type": "array"
+        },
+        "unresolved_cwe_count": {
+          "minimum": 0,
+          "title": "Unresolved Cwe Count",
+          "type": "integer"
+        },
+        "cwe_status": {
+          "enum": [
+            "verified",
+            "unmapped"
+          ],
+          "title": "Cwe Status",
+          "type": "string"
+        },
+        "owasp_categories": {
+          "items": {
+            "pattern": "^A(?:0[1-9]|10):2025$",
+            "type": "string"
+          },
+          "title": "Owasp Categories",
+          "type": "array"
+        },
+        "owasp_version": {
+          "const": "2025",
+          "title": "Owasp Version",
+          "type": "string"
+        },
+        "mapping_revision": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Mapping Revision",
+          "type": "string"
+        },
+        "cwe_catalog_version": {
+          "pattern": "^\\d+(?:\\.\\d+)*$",
+          "title": "Cwe Catalog Version",
+          "type": "string"
+        },
+        "deprecated_cwe_ids": {
+          "items": {
+            "pattern": "^CWE-[1-9][0-9]*$",
+            "type": "string"
+          },
+          "title": "Deprecated Cwe Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "cwe_ids",
+        "unresolved_cwe_count",
+        "cwe_status",
+        "owasp_categories",
+        "owasp_version",
+        "mapping_revision",
+        "cwe_catalog_version",
+        "deprecated_cwe_ids"
+      ],
+      "title": "Classification",
+      "type": "object"
+    },
+    "PublicRisk": {
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low",
+            "info",
+            "unknown"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "maximum": 10,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score"
+        },
+        "cvss_version": {
+          "anyOf": [
+            {
+              "enum": [
+                "2.0",
+                "3.0",
+                "3.1",
+                "4.0"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cvss Version"
+        },
+        "basis": {
+          "enum": [
+            "provided_cvss",
+            "tool_severity",
+            "missing"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "policy_version": {
+          "const": "2025-mock-v3",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ToolRisk"
+          },
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "level",
+        "score",
+        "cvss_version",
+        "basis",
+        "policy_version",
+        "evidence"
+      ],
+      "title": "PublicRisk",
+      "type": "object"
+    },
+    "PublicVulnerability": {
+      "additionalProperties": false,
+      "properties": {
+        "vulnerability_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Vulnerability Id",
+          "type": "string"
+        },
+        "title": {
+          "const": "탐지된 보안 취약점",
+          "title": "Title",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "code",
+            "dependency",
+            "secret"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "tools": {
+          "items": {
+            "enum": [
+              "semgrep",
+              "osv",
+              "gitleaks"
+            ],
+            "type": "string"
+          },
+          "title": "Tools",
+          "type": "array"
+        },
+        "source_count": {
+          "minimum": 1,
+          "title": "Source Count",
+          "type": "integer"
+        },
+        "merge_reason": {
+          "enum": [
+            "패키지·버전·manifest 및 취약점 식별자 집합 일치",
+            "동일 도구·규칙·취약점 식별자 및 행·열 위치 일치",
+            "열 정보 부족으로 개별 유지",
+            "안전한 시크릿 지문 계약 전 개별 유지"
+          ],
+          "title": "Merge Reason",
+          "type": "string"
+        },
+        "classification": {
+          "$ref": "#/$defs/Classification"
+        },
+        "risk": {
+          "$ref": "#/$defs/PublicRisk"
+        }
+      },
+      "required": [
+        "vulnerability_id",
+        "title",
+        "kind",
+        "tools",
+        "source_count",
+        "merge_reason",
+        "classification",
+        "risk"
+      ],
+      "title": "PublicVulnerability",
+      "type": "object"
+    },
+    "ToolRisk": {
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low",
+            "info",
+            "unknown"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "maximum": 10,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score"
+        },
+        "cvss_version": {
+          "anyOf": [
+            {
+              "enum": [
+                "2.0",
+                "3.0",
+                "3.1",
+                "4.0"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cvss Version"
+        },
+        "basis": {
+          "enum": [
+            "provided_cvss",
+            "tool_severity",
+            "missing"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "tool": {
+          "enum": [
+            "semgrep",
+            "osv",
+            "gitleaks"
+          ],
+          "title": "Tool",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "score",
+        "cvss_version",
+        "basis",
+        "tool"
+      ],
+      "title": "ToolRisk",
+      "type": "object"
+    },
+    "ToolStatuses": {
+      "additionalProperties": false,
+      "properties": {
+        "semgrep": {
+          "enum": [
+            "success",
+            "failed",
+            "partial",
+            "not_run"
+          ],
+          "title": "Semgrep",
+          "type": "string"
+        },
+        "osv": {
+          "enum": [
+            "success",
+            "failed",
+            "partial",
+            "not_run"
+          ],
+          "title": "Osv",
+          "type": "string"
+        },
+        "gitleaks": {
+          "enum": [
+            "success",
+            "failed",
+            "partial",
+            "not_run"
+          ],
+          "title": "Gitleaks",
+          "type": "string"
+        }
+      },
+      "required": [
+        "semgrep",
+        "osv",
+        "gitleaks"
+      ],
+      "title": "ToolStatuses",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "analysis_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+      "title": "Analysis Id",
+      "type": "string"
+    },
+    "repository_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$",
+      "title": "Repository Id",
+      "type": "string"
+    },
+    "commit_sha": {
+      "pattern": "^(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})$",
+      "title": "Commit Sha",
+      "type": "string"
+    },
+    "data_origin": {
+      "enum": [
+        "mock",
+        "scanner"
+      ],
+      "title": "Data Origin",
+      "type": "string"
+    },
+    "owasp_version": {
+      "const": "2025",
+      "title": "Owasp Version",
+      "type": "string"
+    },
+    "policy_version": {
+      "const": "2025-mock-v3",
+      "title": "Policy Version",
+      "type": "string"
+    },
+    "tool_statuses": {
+      "$ref": "#/$defs/ToolStatuses"
+    },
+    "complete": {
+      "title": "Complete",
+      "type": "boolean"
+    },
+    "raw_count": {
+      "minimum": 0,
+      "title": "Raw Count",
+      "type": "integer"
+    },
+    "vulnerability_count": {
+      "minimum": 0,
+      "title": "Vulnerability Count",
+      "type": "integer"
+    },
+    "severity_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "propertyNames": {
+        "enum": [
+          "critical",
+          "high",
+          "medium",
+          "low",
+          "info",
+          "unknown"
+        ]
+      },
+      "title": "Severity Counts",
+      "type": "object"
+    },
+    "cwe_counts": {
+      "patternProperties": {
+        "^CWE-[1-9][0-9]*$": {
+          "type": "integer"
+        }
+      },
+      "title": "Cwe Counts",
+      "type": "object"
+    },
+    "owasp_counts": {
+      "patternProperties": {
+        "^A(?:0[1-9]|10):2025$": {
+          "type": "integer"
+        }
+      },
+      "title": "Owasp Counts",
+      "type": "object"
+    },
+    "unmapped_owasp_count": {
+      "minimum": 0,
+      "title": "Unmapped Owasp Count",
+      "type": "integer"
+    },
+    "tool_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "propertyNames": {
+        "enum": [
+          "semgrep",
+          "osv",
+          "gitleaks"
+        ]
+      },
+      "title": "Tool Counts",
+      "type": "object"
+    },
+    "vulnerabilities": {
+      "items": {
+        "$ref": "#/$defs/PublicVulnerability"
+      },
+      "title": "Vulnerabilities",
+      "type": "array"
+    }
+  },
+  "required": [
+    "analysis_id",
+    "repository_id",
+    "commit_sha",
+    "data_origin",
+    "owasp_version",
+    "policy_version",
+    "tool_statuses",
+    "complete",
+    "raw_count",
+    "vulnerability_count",
+    "severity_counts",
+    "cwe_counts",
+    "owasp_counts",
+    "unmapped_owasp_count",
+    "tool_counts",
+    "vulnerabilities"
+  ],
+  "title": "PublicReport",
+  "type": "object"
+}

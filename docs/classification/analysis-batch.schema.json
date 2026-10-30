@@ -1,0 +1,316 @@
+{
+  "$defs": {
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "finding_id": {
+          "minLength": 1,
+          "title": "Finding Id",
+          "type": "string"
+        },
+        "tool": {
+          "enum": [
+            "semgrep",
+            "osv",
+            "gitleaks"
+          ],
+          "title": "Tool",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "code",
+            "dependency",
+            "secret"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "locations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Location"
+          },
+          "title": "Locations",
+          "type": "array"
+        },
+        "vulnerability_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Vulnerability Ids",
+          "type": "array"
+        },
+        "cwe_ids": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Cwe Ids",
+          "type": "array"
+        },
+        "package": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Package"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "severity_original": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Severity Original"
+        },
+        "cvss_score": {
+          "anyOf": [
+            {
+              "maximum": 10,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cvss Score"
+        },
+        "cvss_version": {
+          "anyOf": [
+            {
+              "enum": [
+                "2.0",
+                "3.0",
+                "3.1",
+                "4.0"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cvss Version"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "finding_id",
+        "tool",
+        "kind",
+        "rule_id"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "Location": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "title": "Path",
+          "type": "string"
+        },
+        "start_line": {
+          "minimum": 1,
+          "title": "Start Line",
+          "type": "integer"
+        },
+        "end_line": {
+          "minimum": 1,
+          "title": "End Line",
+          "type": "integer"
+        },
+        "start_column": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start Column"
+        },
+        "end_column": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End Column"
+        }
+      },
+      "required": [
+        "path",
+        "start_line",
+        "end_line"
+      ],
+      "title": "Location",
+      "type": "object"
+    },
+    "Package": {
+      "additionalProperties": false,
+      "properties": {
+        "ecosystem": {
+          "minLength": 1,
+          "title": "Ecosystem",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "manifest": {
+          "minLength": 1,
+          "title": "Manifest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ecosystem",
+        "name",
+        "version",
+        "manifest"
+      ],
+      "title": "Package",
+      "type": "object"
+    },
+    "ToolStatuses": {
+      "additionalProperties": false,
+      "properties": {
+        "semgrep": {
+          "enum": [
+            "success",
+            "failed",
+            "partial",
+            "not_run"
+          ],
+          "title": "Semgrep",
+          "type": "string"
+        },
+        "osv": {
+          "enum": [
+            "success",
+            "failed",
+            "partial",
+            "not_run"
+          ],
+          "title": "Osv",
+          "type": "string"
+        },
+        "gitleaks": {
+          "enum": [
+            "success",
+            "failed",
+            "partial",
+            "not_run"
+          ],
+          "title": "Gitleaks",
+          "type": "string"
+        }
+      },
+      "required": [
+        "semgrep",
+        "osv",
+        "gitleaks"
+      ],
+      "title": "ToolStatuses",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "analysis_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Analysis Id",
+      "type": "string"
+    },
+    "repository_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$",
+      "title": "Repository Id",
+      "type": "string"
+    },
+    "commit_sha": {
+      "pattern": "^(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})$",
+      "title": "Commit Sha",
+      "type": "string"
+    },
+    "data_origin": {
+      "enum": [
+        "mock",
+        "scanner"
+      ],
+      "title": "Data Origin",
+      "type": "string"
+    },
+    "tool_statuses": {
+      "$ref": "#/$defs/ToolStatuses"
+    },
+    "findings": {
+      "items": {
+        "$ref": "#/$defs/Finding"
+      },
+      "title": "Findings",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "analysis_id",
+    "repository_id",
+    "commit_sha",
+    "data_origin",
+    "tool_statuses",
+    "findings"
+  ],
+  "title": "AnalysisBatch",
+  "type": "object"
+}
