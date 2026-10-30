@@ -16,6 +16,7 @@ class Category(str, Enum):
 
 
 class Severity(str, Enum):
+    UNKNOWN = "unknown"
     CRITICAL = "critical"
     HIGH = "high"
     MEDIUM = "medium"
@@ -24,6 +25,7 @@ class Severity(str, Enum):
 
 
 SEVERITY_WEIGHT: dict[Severity, int] = {
+    Severity.UNKNOWN: -1,
     Severity.CRITICAL: 10,
     Severity.HIGH: 7,
     Severity.MEDIUM: 4,
@@ -37,6 +39,8 @@ class Location(BaseModel):
     start_line: int
     end_line: int | None = None
     snippet: str | None = Field(None, description="취약점 주변 코드 몇 줄 (시크릿은 마스킹 필수)")
+    start_column: int | None = Field(default=None, ge=1)
+    end_column: int | None = Field(default=None, ge=1)
 
 
 class DependencyInfo(BaseModel):
@@ -57,19 +61,21 @@ class NormalizedFinding(BaseModel):
     rule_id: str
     title: str
     message: str
-    severity: Severity
+    severity: Severity = Severity.UNKNOWN
     location: Location
     cwe: list[str] = []  # ["CWE-89"]
-    owasp: list[str] = []  # ["A03:2021"]
+    owasp: list[str] = []  # B 입력 버전과 무관하게 C에서 OWASP 2025로 재분류
     dependency: DependencyInfo | None = None
     fingerprint: str = Field(..., description="중복 판단용 해시 (tool 무관하게 같은 문제면 같은 값 지향)")
     raw: dict = Field(default_factory=dict, description="도구 원본 결과 (디버깅용)")
+    cvss_score: float | None = Field(default=None, ge=0, le=10, allow_inf_nan=False)
+    cvss_version: str | None = None
 
 
 class ClassifiedFinding(NormalizedFinding):
     """[C 작성] 분류·평가가 끝난 형태. DB findings 테이블에 저장된다."""
 
-    owasp_top10: str | None = None  # 대표 카테고리 1개, 예: "A03:2021-Injection"
+    owasp_top10: str | None = None  # 대표 카테고리 1개, 예: "A05:2025"
     risk_score: float = 0.0  # 0 ~ 100
     priority: int = 0  # 1이 가장 먼저 고칠 것
     duplicate_count: int = 1  # 통합된 탐지 개수
