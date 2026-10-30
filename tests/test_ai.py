@@ -118,3 +118,33 @@ def test_verify_fix_syntax_failure(tmp_path: Path):
     assert res.verified is False
     assert "문법 오류" in res.note
 
+
+
+def test_verify_fix_ignores_same_rule_elsewhere_in_file(tmp_path: Path):
+    """같은 파일의 다른 위치에 남은 동일 취약점 때문에 올바른 수정이 탈락하면 안 된다."""
+    import json as _json
+
+    target = tmp_path / "db.py"
+    target.write_text("a = 1\nbad_call(x)\nb = 2\nc = 3\nbad_call(y)\n", encoding="utf-8")
+    change = FileChange(file_path="db.py", original_code="bad_call(x)", fixed_code="good_call(x)")
+
+    def fake_run(cmd, **kwargs):
+        # 수정 후 5번째 줄(다른 위치)에만 같은 룰이 남아 있음
+        out = {"results": [{"check_id": "p.rule", "start": {"line": 5}, "end": {"line": 5}}]}
+        return MagicMock(stdout=_json.dumps(out), returncode=0)
+
+    with patch("app.services.ai.verifier.shutil.which", return_value="/bin/semgrep"), patch(
+        "app.services.ai.verifier.subprocess.run", side_effect=fake_run
+    ):
+        assert verify_fix(tmp_path, change, rule_id="p.rule").verified
+
+    target.write_text("a = 1\nbad_call(x)\n", encoding="utf-8")
+
+    def fake_run_same_line(cmd, **kwargs):
+        out = {"results": [{"check_id": "p.rule", "start": {"line": 2}, "end": {"line": 2}}]}
+        return MagicMock(stdout=_json.dumps(out), returncode=0)
+
+    with patch("app.services.ai.verifier.shutil.which", return_value="/bin/semgrep"), patch(
+        "app.services.ai.verifier.subprocess.run", side_effect=fake_run_same_line
+    ):
+        assert not verify_fix(tmp_path, change, rule_id="p.rule").verified

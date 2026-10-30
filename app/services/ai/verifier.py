@@ -54,8 +54,26 @@ def _syntax_ok(path: Path) -> tuple[bool, str]:
     return True, ""
 
 
+def _changed_lines(repo: Path, change: FileChange) -> tuple[int, int] | None:
+    """수정 코드가 적용된 뒤 차지하게 될 줄 범위 (1부터 시작, 양끝 포함)."""
+    try:
+        content = (repo / change.file_path).read_text(encoding="utf-8")
+    except OSError:
+        return None
+    idx = content.find(change.original_code)
+    if idx < 0:
+        return None
+    start = content[:idx].count("\n") + 1
+    return start, start + change.fixed_code.count("\n")
+
+
 def verify_fix(repo: Path, change: FileChange, rule_id: str) -> VerificationResult:
-    """repo는 해당 커밋으로 새로 클론한 임시 폴더여야 한다."""
+    """repo는 해당 커밋으로 새로 클론한 임시 폴더여야 한다.
+
+    같은 파일에 같은 종류의 취약점이 여러 개 있을 수 있으므로,
+    재스캔 결과 중 '수정한 줄 범위'에 걸친 탐지만 실패로 본다.
+    """
+    region = _changed_lines(repo, change)
     try:
         apply_changes(repo, [change])
     except ValueError as e:
@@ -87,7 +105,15 @@ def verify_fix(repo: Path, change: FileChange, rule_id: str) -> VerificationResu
                 timeout=120,
             )
             results = json.loads(proc.stdout or "{}").get("results", [])
-            if any(r.get("check_id") == rule_id for r in results):
+            same_rule = [r for r in results if r.get("check_id") == rule_id]
+            if region is not None:
+                start, end = region
+                same_rule = [
+                    r
+                    for r in same_rule
+                    if r.get("start", {}).get("line", 0) <= end and r.get("end", {}).get("line", 0) >= start
+                ]
+            if same_rule:
                 return VerificationResult(False, "재스캔 결과 같은 취약점이 여전히 탐지됨")
             return VerificationResult(True, "재스캔 결과 해당 취약점이 사라짐")
         except subprocess.TimeoutExpired:
