@@ -26,4 +26,7 @@ def client():
 
     with TestClient(app) as c:
         yield c
+    from app.core.database import engine
+
+    engine.dispose()
     Path("test.db").unlink(missing_ok=True)

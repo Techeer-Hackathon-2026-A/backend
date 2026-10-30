@@ -1,0 +1,2961 @@
+{
+  "version": "5.0",
+  "date": "2026-10-28",
+  "source": "https://cwe.mitre.org/data/xml/cwec_latest.xml.zip",
+  "sha256": "bcda44c9abf61ff977f50c3c6649eea5a97a7b0626b0396c2c3ec4bfb973a3dc",
+  "terms": "https://cwe.mitre.org/about/termsofuse.html",
+  "weaknesses": {
+    "CWE-1004": {
+      "status": "Incomplete"
+    },
+    "CWE-1007": {
+      "status": "Incomplete"
+    },
+    "CWE-102": {
+      "status": "Incomplete"
+    },
+    "CWE-1021": {
+      "status": "Incomplete"
+    },
+    "CWE-1022": {
+      "status": "Incomplete"
+    },
+    "CWE-1023": {
+      "status": "Incomplete"
+    },
+    "CWE-1024": {
+      "status": "Incomplete"
+    },
+    "CWE-1025": {
+      "status": "Incomplete"
+    },
+    "CWE-103": {
+      "status": "Draft"
+    },
+    "CWE-1037": {
+      "status": "Incomplete"
+    },
+    "CWE-1038": {
+      "status": "Draft"
+    },
+    "CWE-1039": {
+      "status": "Incomplete"
+    },
+    "CWE-104": {
+      "status": "Draft"
+    },
+    "CWE-1041": {
+      "status": "Incomplete"
+    },
+    "CWE-1042": {
+      "status": "Incomplete"
+    },
+    "CWE-1043": {
+      "status": "Incomplete"
+    },
+    "CWE-1044": {
+      "status": "Incomplete"
+    },
+    "CWE-1045": {
+      "status": "Incomplete"
+    },
+    "CWE-1046": {
+      "status": "Incomplete"
+    },
+    "CWE-1047": {
+      "status": "Incomplete"
+    },
+    "CWE-1048": {
+      "status": "Incomplete"
+    },
+    "CWE-1049": {
+      "status": "Incomplete"
+    },
+    "CWE-105": {
+      "status": "Draft"
+    },
+    "CWE-1050": {
+      "status": "Incomplete"
+    },
+    "CWE-1051": {
+      "status": "Incomplete"
+    },
+    "CWE-1052": {
+      "status": "Incomplete"
+    },
+    "CWE-1053": {
+      "status": "Incomplete"
+    },
+    "CWE-1054": {
+      "status": "Incomplete"
+    },
+    "CWE-1055": {
+      "status": "Incomplete"
+    },
+    "CWE-1056": {
+      "status": "Incomplete"
+    },
+    "CWE-1057": {
+      "status": "Incomplete"
+    },
+    "CWE-1058": {
+      "status": "Incomplete"
+    },
+    "CWE-1059": {
+      "status": "Incomplete"
+    },
+    "CWE-106": {
+      "status": "Draft"
+    },
+    "CWE-1060": {
+      "status": "Incomplete"
+    },
+    "CWE-1061": {
+      "status": "Incomplete"
+    },
+    "CWE-1062": {
+      "status": "Incomplete"
+    },
+    "CWE-1063": {
+      "status": "Incomplete"
+    },
+    "CWE-1064": {
+      "status": "Incomplete"
+    },
+    "CWE-1065": {
+      "status": "Incomplete"
+    },
+    "CWE-1066": {
+      "status": "Incomplete"
+    },
+    "CWE-1067": {
+      "status": "Incomplete"
+    },
+    "CWE-1068": {
+      "status": "Incomplete"
+    },
+    "CWE-1069": {
+      "status": "Incomplete"
+    },
+    "CWE-107": {
+      "status": "Draft"
+    },
+    "CWE-1070": {
+      "status": "Incomplete"
+    },
+    "CWE-1071": {
+      "status": "Incomplete"
+    },
+    "CWE-1072": {
+      "status": "Incomplete"
+    },
+    "CWE-1073": {
+      "status": "Incomplete"
+    },
+    "CWE-1074": {
+      "status": "Incomplete"
+    },
+    "CWE-1075": {
+      "status": "Incomplete"
+    },
+    "CWE-1076": {
+      "status": "Incomplete"
+    },
+    "CWE-1077": {
+      "status": "Incomplete"
+    },
+    "CWE-1078": {
+      "status": "Incomplete"
+    },
+    "CWE-1079": {
+      "status": "Incomplete"
+    },
+    "CWE-108": {
+      "status": "Incomplete"
+    },
+    "CWE-1080": {
+      "status": "Incomplete"
+    },
+    "CWE-1082": {
+      "status": "Incomplete"
+    },
+    "CWE-1083": {
+      "status": "Incomplete"
+    },
+    "CWE-1084": {
+      "status": "Incomplete"
+    },
+    "CWE-1085": {
+      "status": "Incomplete"
+    },
+    "CWE-1086": {
+      "status": "Incomplete"
+    },
+    "CWE-1087": {
+      "status": "Incomplete"
+    },
+    "CWE-1088": {
+      "status": "Incomplete"
+    },
+    "CWE-1089": {
+      "status": "Incomplete"
+    },
+    "CWE-109": {
+      "status": "Draft"
+    },
+    "CWE-1090": {
+      "status": "Incomplete"
+    },
+    "CWE-1091": {
+      "status": "Incomplete"
+    },
+    "CWE-1092": {
+      "status": "Incomplete"
+    },
+    "CWE-1093": {
+      "status": "Incomplete"
+    },
+    "CWE-1094": {
+      "status": "Incomplete"
+    },
+    "CWE-1095": {
+      "status": "Incomplete"
+    },
+    "CWE-1096": {
+      "status": "Incomplete"
+    },
+    "CWE-1097": {
+      "status": "Incomplete"
+    },
+    "CWE-1098": {
+      "status": "Incomplete"
+    },
+    "CWE-1099": {
+      "status": "Incomplete"
+    },
+    "CWE-11": {
+      "status": "Draft"
+    },
+    "CWE-110": {
+      "status": "Draft"
+    },
+    "CWE-1100": {
+      "status": "Incomplete"
+    },
+    "CWE-1101": {
+      "status": "Incomplete"
+    },
+    "CWE-1102": {
+      "status": "Incomplete"
+    },
+    "CWE-1103": {
+      "status": "Incomplete"
+    },
+    "CWE-1104": {
+      "status": "Incomplete"
+    },
+    "CWE-1105": {
+      "status": "Incomplete"
+    },
+    "CWE-1106": {
+      "status": "Incomplete"
+    },
+    "CWE-1107": {
+      "status": "Incomplete"
+    },
+    "CWE-1108": {
+      "status": "Incomplete"
+    },
+    "CWE-1109": {
+      "status": "Incomplete"
+    },
+    "CWE-111": {
+      "status": "Draft"
+    },
+    "CWE-1110": {
+      "status": "Incomplete"
+    },
+    "CWE-1111": {
+      "status": "Incomplete"
+    },
+    "CWE-1112": {
+      "status": "Incomplete"
+    },
+    "CWE-1113": {
+      "status": "Incomplete"
+    },
+    "CWE-1114": {
+      "status": "Incomplete"
+    },
+    "CWE-1115": {
+      "status": "Incomplete"
+    },
+    "CWE-1116": {
+      "status": "Incomplete"
+    },
+    "CWE-1117": {
+      "status": "Incomplete"
+    },
+    "CWE-1118": {
+      "status": "Incomplete"
+    },
+    "CWE-1119": {
+      "status": "Incomplete"
+    },
+    "CWE-112": {
+      "status": "Draft"
+    },
+    "CWE-1120": {
+      "status": "Incomplete"
+    },
+    "CWE-1121": {
+      "status": "Incomplete"
+    },
+    "CWE-1122": {
+      "status": "Incomplete"
+    },
+    "CWE-1123": {
+      "status": "Incomplete"
+    },
+    "CWE-1124": {
+      "status": "Incomplete"
+    },
+    "CWE-1125": {
+      "status": "Incomplete"
+    },
+    "CWE-1126": {
+      "status": "Incomplete"
+    },
+    "CWE-1127": {
+      "status": "Incomplete"
+    },
+    "CWE-113": {
+      "status": "Incomplete"
+    },
+    "CWE-114": {
+      "status": "Incomplete"
+    },
+    "CWE-115": {
+      "status": "Incomplete"
+    },
+    "CWE-116": {
+      "status": "Draft"
+    },
+    "CWE-1164": {
+      "status": "Incomplete"
+    },
+    "CWE-117": {
+      "status": "Draft"
+    },
+    "CWE-1173": {
+      "status": "Draft"
+    },
+    "CWE-1174": {
+      "status": "Draft"
+    },
+    "CWE-1176": {
+      "status": "Incomplete"
+    },
+    "CWE-1177": {
+      "status": "Incomplete"
+    },
+    "CWE-118": {
+      "status": "Incomplete"
+    },
+    "CWE-1187": {
+      "status": "Deprecated"
+    },
+    "CWE-1188": {
+      "status": "Incomplete"
+    },
+    "CWE-1189": {
+      "status": "Stable"
+    },
+    "CWE-119": {
+      "status": "Stable"
+    },
+    "CWE-1190": {
+      "status": "Draft"
+    },
+    "CWE-1191": {
+      "status": "Stable"
+    },
+    "CWE-1192": {
+      "status": "Draft"
+    },
+    "CWE-1193": {
+      "status": "Draft"
+    },
+    "CWE-12": {
+      "status": "Draft"
+    },
+    "CWE-120": {
+      "status": "Incomplete"
+    },
+    "CWE-1204": {
+      "status": "Incomplete"
+    },
+    "CWE-1209": {
+      "status": "Incomplete"
+    },
+    "CWE-121": {
+      "status": "Draft"
+    },
+    "CWE-122": {
+      "status": "Draft"
+    },
+    "CWE-1220": {
+      "status": "Incomplete"
+    },
+    "CWE-1221": {
+      "status": "Incomplete"
+    },
+    "CWE-1222": {
+      "status": "Incomplete"
+    },
+    "CWE-1223": {
+      "status": "Incomplete"
+    },
+    "CWE-1224": {
+      "status": "Incomplete"
+    },
+    "CWE-1229": {
+      "status": "Incomplete"
+    },
+    "CWE-123": {
+      "status": "Draft"
+    },
+    "CWE-1230": {
+      "status": "Incomplete"
+    },
+    "CWE-1231": {
+      "status": "Stable"
+    },
+    "CWE-1232": {
+      "status": "Incomplete"
+    },
+    "CWE-1233": {
+      "status": "Stable"
+    },
+    "CWE-1234": {
+      "status": "Incomplete"
+    },
+    "CWE-1235": {
+      "status": "Incomplete"
+    },
+    "CWE-1236": {
+      "status": "Incomplete"
+    },
+    "CWE-1239": {
+      "status": "Draft"
+    },
+    "CWE-124": {
+      "status": "Incomplete"
+    },
+    "CWE-1240": {
+      "status": "Draft"
+    },
+    "CWE-1241": {
+      "status": "Draft"
+    },
+    "CWE-1242": {
+      "status": "Incomplete"
+    },
+    "CWE-1243": {
+      "status": "Incomplete"
+    },
+    "CWE-1244": {
+      "status": "Stable"
+    },
+    "CWE-1245": {
+      "status": "Incomplete"
+    },
+    "CWE-1246": {
+      "status": "Incomplete"
+    },
+    "CWE-1247": {
+      "status": "Stable"
+    },
+    "CWE-1248": {
+      "status": "Incomplete"
+    },
+    "CWE-1249": {
+      "status": "Incomplete"
+    },
+    "CWE-125": {
+      "status": "Draft"
+    },
+    "CWE-1250": {
+      "status": "Incomplete"
+    },
+    "CWE-1251": {
+      "status": "Incomplete"
+    },
+    "CWE-1252": {
+      "status": "Incomplete"
+    },
+    "CWE-1253": {
+      "status": "Draft"
+    },
+    "CWE-1254": {
+      "status": "Draft"
+    },
+    "CWE-1255": {
+      "status": "Draft"
+    },
+    "CWE-1256": {
+      "status": "Stable"
+    },
+    "CWE-1257": {
+      "status": "Incomplete"
+    },
+    "CWE-1258": {
+      "status": "Draft"
+    },
+    "CWE-1259": {
+      "status": "Incomplete"
+    },
+    "CWE-126": {
+      "status": "Draft"
+    },
+    "CWE-1260": {
+      "status": "Stable"
+    },
+    "CWE-1261": {
+      "status": "Draft"
+    },
+    "CWE-1262": {
+      "status": "Stable"
+    },
+    "CWE-1263": {
+      "status": "Incomplete"
+    },
+    "CWE-1264": {
+      "status": "Incomplete"
+    },
+    "CWE-1265": {
+      "status": "Draft"
+    },
+    "CWE-1266": {
+      "status": "Incomplete"
+    },
+    "CWE-1267": {
+      "status": "Draft"
+    },
+    "CWE-1268": {
+      "status": "Draft"
+    },
+    "CWE-1269": {
+      "status": "Incomplete"
+    },
+    "CWE-127": {
+      "status": "Draft"
+    },
+    "CWE-1270": {
+      "status": "Incomplete"
+    },
+    "CWE-1271": {
+      "status": "Incomplete"
+    },
+    "CWE-1272": {
+      "status": "Stable"
+    },
+    "CWE-1273": {
+      "status": "Incomplete"
+    },
+    "CWE-1274": {
+      "status": "Stable"
+    },
+    "CWE-1275": {
+      "status": "Incomplete"
+    },
+    "CWE-1276": {
+      "status": "Incomplete"
+    },
+    "CWE-1277": {
+      "status": "Draft"
+    },
+    "CWE-1278": {
+      "status": "Incomplete"
+    },
+    "CWE-1279": {
+      "status": "Incomplete"
+    },
+    "CWE-128": {
+      "status": "Incomplete"
+    },
+    "CWE-1280": {
+      "status": "Incomplete"
+    },
+    "CWE-1281": {
+      "status": "Incomplete"
+    },
+    "CWE-1282": {
+      "status": "Incomplete"
+    },
+    "CWE-1283": {
+      "status": "Incomplete"
+    },
+    "CWE-1284": {
+      "status": "Incomplete"
+    },
+    "CWE-1285": {
+      "status": "Incomplete"
+    },
+    "CWE-1286": {
+      "status": "Incomplete"
+    },
+    "CWE-1287": {
+      "status": "Incomplete"
+    },
+    "CWE-1288": {
+      "status": "Incomplete"
+    },
+    "CWE-1289": {
+      "status": "Incomplete"
+    },
+    "CWE-129": {
+      "status": "Draft"
+    },
+    "CWE-1290": {
+      "status": "Incomplete"
+    },
+    "CWE-1291": {
+      "status": "Draft"
+    },
+    "CWE-1292": {
+      "status": "Draft"
+    },
+    "CWE-1293": {
+      "status": "Draft"
+    },
+    "CWE-1294": {
+      "status": "Incomplete"
+    },
+    "CWE-1295": {
+      "status": "Incomplete"
+    },
+    "CWE-1296": {
+      "status": "Incomplete"
+    },
+    "CWE-1297": {
+      "status": "Incomplete"
+    },
+    "CWE-1298": {
+      "status": "Draft"
+    },
+    "CWE-1299": {
+      "status": "Draft"
+    },
+    "CWE-13": {
+      "status": "Draft"
+    },
+    "CWE-130": {
+      "status": "Incomplete"
+    },
+    "CWE-1300": {
+      "status": "Stable"
+    },
+    "CWE-1301": {
+      "status": "Incomplete"
+    },
+    "CWE-1302": {
+      "status": "Incomplete"
+    },
+    "CWE-1303": {
+      "status": "Draft"
+    },
+    "CWE-1304": {
+      "status": "Draft"
+    },
+    "CWE-131": {
+      "status": "Draft"
+    },
+    "CWE-1310": {
+      "status": "Draft"
+    },
+    "CWE-1311": {
+      "status": "Draft"
+    },
+    "CWE-1312": {
+      "status": "Draft"
+    },
+    "CWE-1313": {
+      "status": "Draft"
+    },
+    "CWE-1314": {
+      "status": "Draft"
+    },
+    "CWE-1315": {
+      "status": "Incomplete"
+    },
+    "CWE-1316": {
+      "status": "Draft"
+    },
+    "CWE-1317": {
+      "status": "Draft"
+    },
+    "CWE-1318": {
+      "status": "Incomplete"
+    },
+    "CWE-1319": {
+      "status": "Incomplete"
+    },
+    "CWE-132": {
+      "status": "Deprecated"
+    },
+    "CWE-1320": {
+      "status": "Draft"
+    },
+    "CWE-1321": {
+      "status": "Incomplete"
+    },
+    "CWE-1322": {
+      "status": "Incomplete"
+    },
+    "CWE-1323": {
+      "status": "Draft"
+    },
+    "CWE-1324": {
+      "status": "Deprecated"
+    },
+    "CWE-1325": {
+      "status": "Incomplete"
+    },
+    "CWE-1326": {
+      "status": "Draft"
+    },
+    "CWE-1327": {
+      "status": "Incomplete"
+    },
+    "CWE-1328": {
+      "status": "Draft"
+    },
+    "CWE-1329": {
+      "status": "Incomplete"
+    },
+    "CWE-1330": {
+      "status": "Draft"
+    },
+    "CWE-1331": {
+      "status": "Stable"
+    },
+    "CWE-1332": {
+      "status": "Stable"
+    },
+    "CWE-1333": {
+      "status": "Draft"
+    },
+    "CWE-1334": {
+      "status": "Draft"
+    },
+    "CWE-1335": {
+      "status": "Draft"
+    },
+    "CWE-1336": {
+      "status": "Incomplete"
+    },
+    "CWE-1338": {
+      "status": "Draft"
+    },
+    "CWE-1339": {
+      "status": "Draft"
+    },
+    "CWE-134": {
+      "status": "Draft"
+    },
+    "CWE-1341": {
+      "status": "Incomplete"
+    },
+    "CWE-1342": {
+      "status": "Incomplete"
+    },
+    "CWE-135": {
+      "status": "Draft"
+    },
+    "CWE-1351": {
+      "status": "Incomplete"
+    },
+    "CWE-1357": {
+      "status": "Incomplete"
+    },
+    "CWE-138": {
+      "status": "Draft"
+    },
+    "CWE-1384": {
+      "status": "Incomplete"
+    },
+    "CWE-1385": {
+      "status": "Incomplete"
+    },
+    "CWE-1386": {
+      "status": "Incomplete"
+    },
+    "CWE-1389": {
+      "status": "Incomplete"
+    },
+    "CWE-1390": {
+      "status": "Incomplete"
+    },
+    "CWE-1391": {
+      "status": "Incomplete"
+    },
+    "CWE-1392": {
+      "status": "Incomplete"
+    },
+    "CWE-1393": {
+      "status": "Incomplete"
+    },
+    "CWE-1394": {
+      "status": "Incomplete"
+    },
+    "CWE-1395": {
+      "status": "Incomplete"
+    },
+    "CWE-14": {
+      "status": "Draft"
+    },
+    "CWE-140": {
+      "status": "Draft"
+    },
+    "CWE-141": {
+      "status": "Draft"
+    },
+    "CWE-1419": {
+      "status": "Incomplete"
+    },
+    "CWE-142": {
+      "status": "Draft"
+    },
+    "CWE-1420": {
+      "status": "Incomplete"
+    },
+    "CWE-1421": {
+      "status": "Incomplete"
+    },
+    "CWE-1422": {
+      "status": "Incomplete"
+    },
+    "CWE-1423": {
+      "status": "Incomplete"
+    },
+    "CWE-1426": {
+      "status": "Incomplete"
+    },
+    "CWE-1427": {
+      "status": "Incomplete"
+    },
+    "CWE-1428": {
+      "status": "Incomplete"
+    },
+    "CWE-1429": {
+      "status": "Incomplete"
+    },
+    "CWE-143": {
+      "status": "Draft"
+    },
+    "CWE-1431": {
+      "status": "Incomplete"
+    },
+    "CWE-1434": {
+      "status": "Draft"
+    },
+    "CWE-144": {
+      "status": "Draft"
+    },
+    "CWE-145": {
+      "status": "Incomplete"
+    },
+    "CWE-146": {
+      "status": "Incomplete"
+    },
+    "CWE-1461": {
+      "status": "Incomplete"
+    },
+    "CWE-1462": {
+      "status": "Incomplete"
+    },
+    "CWE-1463": {
+      "status": "Incomplete"
+    },
+    "CWE-1464": {
+      "status": "Incomplete"
+    },
+    "CWE-1465": {
+      "status": "Incomplete"
+    },
+    "CWE-1466": {
+      "status": "Incomplete"
+    },
+    "CWE-1467": {
+      "status": "Incomplete"
+    },
+    "CWE-1469": {
+      "status": "Incomplete"
+    },
+    "CWE-147": {
+      "status": "Draft"
+    },
+    "CWE-1470": {
+      "status": "Incomplete"
+    },
+    "CWE-1471": {
+      "status": "Incomplete"
+    },
+    "CWE-1472": {
+      "status": "Incomplete"
+    },
+    "CWE-1473": {
+      "status": "Incomplete"
+    },
+    "CWE-1474": {
+      "status": "Incomplete"
+    },
+    "CWE-1475": {
+      "status": "Incomplete"
+    },
+    "CWE-1476": {
+      "status": "Incomplete"
+    },
+    "CWE-148": {
+      "status": "Draft"
+    },
+    "CWE-149": {
+      "status": "Draft"
+    },
+    "CWE-15": {
+      "status": "Incomplete"
+    },
+    "CWE-150": {
+      "status": "Incomplete"
+    },
+    "CWE-151": {
+      "status": "Draft"
+    },
+    "CWE-152": {
+      "status": "Draft"
+    },
+    "CWE-153": {
+      "status": "Draft"
+    },
+    "CWE-154": {
+      "status": "Incomplete"
+    },
+    "CWE-155": {
+      "status": "Draft"
+    },
+    "CWE-156": {
+      "status": "Draft"
+    },
+    "CWE-157": {
+      "status": "Draft"
+    },
+    "CWE-158": {
+      "status": "Incomplete"
+    },
+    "CWE-159": {
+      "status": "Draft"
+    },
+    "CWE-160": {
+      "status": "Incomplete"
+    },
+    "CWE-161": {
+      "status": "Incomplete"
+    },
+    "CWE-162": {
+      "status": "Incomplete"
+    },
+    "CWE-163": {
+      "status": "Incomplete"
+    },
+    "CWE-164": {
+      "status": "Incomplete"
+    },
+    "CWE-165": {
+      "status": "Incomplete"
+    },
+    "CWE-166": {
+      "status": "Draft"
+    },
+    "CWE-167": {
+      "status": "Draft"
+    },
+    "CWE-168": {
+      "status": "Draft"
+    },
+    "CWE-170": {
+      "status": "Incomplete"
+    },
+    "CWE-172": {
+      "status": "Draft"
+    },
+    "CWE-173": {
+      "status": "Draft"
+    },
+    "CWE-174": {
+      "status": "Draft"
+    },
+    "CWE-175": {
+      "status": "Draft"
+    },
+    "CWE-176": {
+      "status": "Draft"
+    },
+    "CWE-177": {
+      "status": "Draft"
+    },
+    "CWE-178": {
+      "status": "Incomplete"
+    },
+    "CWE-179": {
+      "status": "Incomplete"
+    },
+    "CWE-180": {
+      "status": "Draft"
+    },
+    "CWE-181": {
+      "status": "Draft"
+    },
+    "CWE-182": {
+      "status": "Draft"
+    },
+    "CWE-183": {
+      "status": "Draft"
+    },
+    "CWE-184": {
+      "status": "Draft"
+    },
+    "CWE-185": {
+      "status": "Draft"
+    },
+    "CWE-186": {
+      "status": "Draft"
+    },
+    "CWE-187": {
+      "status": "Incomplete"
+    },
+    "CWE-188": {
+      "status": "Draft"
+    },
+    "CWE-190": {
+      "status": "Stable"
+    },
+    "CWE-191": {
+      "status": "Draft"
+    },
+    "CWE-192": {
+      "status": "Incomplete"
+    },
+    "CWE-193": {
+      "status": "Draft"
+    },
+    "CWE-194": {
+      "status": "Incomplete"
+    },
+    "CWE-195": {
+      "status": "Draft"
+    },
+    "CWE-196": {
+      "status": "Draft"
+    },
+    "CWE-197": {
+      "status": "Incomplete"
+    },
+    "CWE-198": {
+      "status": "Draft"
+    },
+    "CWE-20": {
+      "status": "Stable"
+    },
+    "CWE-200": {
+      "status": "Draft"
+    },
+    "CWE-201": {
+      "status": "Draft"
+    },
+    "CWE-202": {
+      "status": "Draft"
+    },
+    "CWE-203": {
+      "status": "Incomplete"
+    },
+    "CWE-204": {
+      "status": "Incomplete"
+    },
+    "CWE-205": {
+      "status": "Incomplete"
+    },
+    "CWE-206": {
+      "status": "Incomplete"
+    },
+    "CWE-207": {
+      "status": "Draft"
+    },
+    "CWE-208": {
+      "status": "Incomplete"
+    },
+    "CWE-209": {
+      "status": "Draft"
+    },
+    "CWE-210": {
+      "status": "Draft"
+    },
+    "CWE-211": {
+      "status": "Incomplete"
+    },
+    "CWE-212": {
+      "status": "Incomplete"
+    },
+    "CWE-213": {
+      "status": "Draft"
+    },
+    "CWE-214": {
+      "status": "Incomplete"
+    },
+    "CWE-215": {
+      "status": "Draft"
+    },
+    "CWE-216": {
+      "status": "Deprecated"
+    },
+    "CWE-217": {
+      "status": "Deprecated"
+    },
+    "CWE-218": {
+      "status": "Deprecated"
+    },
+    "CWE-219": {
+      "status": "Draft"
+    },
+    "CWE-22": {
+      "status": "Stable"
+    },
+    "CWE-220": {
+      "status": "Draft"
+    },
+    "CWE-221": {
+      "status": "Incomplete"
+    },
+    "CWE-222": {
+      "status": "Draft"
+    },
+    "CWE-223": {
+      "status": "Draft"
+    },
+    "CWE-224": {
+      "status": "Incomplete"
+    },
+    "CWE-225": {
+      "status": "Deprecated"
+    },
+    "CWE-226": {
+      "status": "Draft"
+    },
+    "CWE-228": {
+      "status": "Incomplete"
+    },
+    "CWE-229": {
+      "status": "Incomplete"
+    },
+    "CWE-23": {
+      "status": "Draft"
+    },
+    "CWE-230": {
+      "status": "Draft"
+    },
+    "CWE-231": {
+      "status": "Draft"
+    },
+    "CWE-232": {
+      "status": "Draft"
+    },
+    "CWE-233": {
+      "status": "Incomplete"
+    },
+    "CWE-234": {
+      "status": "Incomplete"
+    },
+    "CWE-235": {
+      "status": "Draft"
+    },
+    "CWE-236": {
+      "status": "Draft"
+    },
+    "CWE-237": {
+      "status": "Incomplete"
+    },
+    "CWE-238": {
+      "status": "Draft"
+    },
+    "CWE-239": {
+      "status": "Draft"
+    },
+    "CWE-24": {
+      "status": "Incomplete"
+    },
+    "CWE-240": {
+      "status": "Draft"
+    },
+    "CWE-241": {
+      "status": "Draft"
+    },
+    "CWE-242": {
+      "status": "Draft"
+    },
+    "CWE-243": {
+      "status": "Draft"
+    },
+    "CWE-244": {
+      "status": "Draft"
+    },
+    "CWE-245": {
+      "status": "Draft"
+    },
+    "CWE-246": {
+      "status": "Draft"
+    },
+    "CWE-247": {
+      "status": "Deprecated"
+    },
+    "CWE-248": {
+      "status": "Draft"
+    },
+    "CWE-249": {
+      "status": "Deprecated"
+    },
+    "CWE-25": {
+      "status": "Incomplete"
+    },
+    "CWE-250": {
+      "status": "Draft"
+    },
+    "CWE-252": {
+      "status": "Draft"
+    },
+    "CWE-253": {
+      "status": "Incomplete"
+    },
+    "CWE-256": {
+      "status": "Incomplete"
+    },
+    "CWE-257": {
+      "status": "Incomplete"
+    },
+    "CWE-258": {
+      "status": "Incomplete"
+    },
+    "CWE-259": {
+      "status": "Draft"
+    },
+    "CWE-26": {
+      "status": "Draft"
+    },
+    "CWE-260": {
+      "status": "Incomplete"
+    },
+    "CWE-261": {
+      "status": "Incomplete"
+    },
+    "CWE-262": {
+      "status": "Draft"
+    },
+    "CWE-263": {
+      "status": "Draft"
+    },
+    "CWE-266": {
+      "status": "Draft"
+    },
+    "CWE-267": {
+      "status": "Incomplete"
+    },
+    "CWE-268": {
+      "status": "Draft"
+    },
+    "CWE-269": {
+      "status": "Draft"
+    },
+    "CWE-27": {
+      "status": "Draft"
+    },
+    "CWE-270": {
+      "status": "Draft"
+    },
+    "CWE-271": {
+      "status": "Incomplete"
+    },
+    "CWE-272": {
+      "status": "Incomplete"
+    },
+    "CWE-273": {
+      "status": "Incomplete"
+    },
+    "CWE-274": {
+      "status": "Draft"
+    },
+    "CWE-276": {
+      "status": "Draft"
+    },
+    "CWE-277": {
+      "status": "Draft"
+    },
+    "CWE-278": {
+      "status": "Incomplete"
+    },
+    "CWE-279": {
+      "status": "Draft"
+    },
+    "CWE-28": {
+      "status": "Incomplete"
+    },
+    "CWE-280": {
+      "status": "Draft"
+    },
+    "CWE-281": {
+      "status": "Draft"
+    },
+    "CWE-282": {
+      "status": "Draft"
+    },
+    "CWE-283": {
+      "status": "Draft"
+    },
+    "CWE-284": {
+      "status": "Incomplete"
+    },
+    "CWE-285": {
+      "status": "Draft"
+    },
+    "CWE-286": {
+      "status": "Incomplete"
+    },
+    "CWE-287": {
+      "status": "Draft"
+    },
+    "CWE-288": {
+      "status": "Incomplete"
+    },
+    "CWE-289": {
+      "status": "Incomplete"
+    },
+    "CWE-29": {
+      "status": "Incomplete"
+    },
+    "CWE-290": {
+      "status": "Incomplete"
+    },
+    "CWE-291": {
+      "status": "Incomplete"
+    },
+    "CWE-292": {
+      "status": "Deprecated"
+    },
+    "CWE-293": {
+      "status": "Draft"
+    },
+    "CWE-294": {
+      "status": "Incomplete"
+    },
+    "CWE-295": {
+      "status": "Draft"
+    },
+    "CWE-296": {
+      "status": "Draft"
+    },
+    "CWE-297": {
+      "status": "Incomplete"
+    },
+    "CWE-298": {
+      "status": "Draft"
+    },
+    "CWE-299": {
+      "status": "Draft"
+    },
+    "CWE-30": {
+      "status": "Draft"
+    },
+    "CWE-300": {
+      "status": "Draft"
+    },
+    "CWE-301": {
+      "status": "Draft"
+    },
+    "CWE-302": {
+      "status": "Incomplete"
+    },
+    "CWE-303": {
+      "status": "Draft"
+    },
+    "CWE-304": {
+      "status": "Draft"
+    },
+    "CWE-305": {
+      "status": "Draft"
+    },
+    "CWE-306": {
+      "status": "Draft"
+    },
+    "CWE-307": {
+      "status": "Draft"
+    },
+    "CWE-308": {
+      "status": "Draft"
+    },
+    "CWE-309": {
+      "status": "Draft"
+    },
+    "CWE-31": {
+      "status": "Draft"
+    },
+    "CWE-311": {
+      "status": "Draft"
+    },
+    "CWE-312": {
+      "status": "Draft"
+    },
+    "CWE-313": {
+      "status": "Draft"
+    },
+    "CWE-314": {
+      "status": "Draft"
+    },
+    "CWE-315": {
+      "status": "Draft"
+    },
+    "CWE-316": {
+      "status": "Draft"
+    },
+    "CWE-317": {
+      "status": "Draft"
+    },
+    "CWE-318": {
+      "status": "Draft"
+    },
+    "CWE-319": {
+      "status": "Draft"
+    },
+    "CWE-32": {
+      "status": "Incomplete"
+    },
+    "CWE-321": {
+      "status": "Draft"
+    },
+    "CWE-322": {
+      "status": "Draft"
+    },
+    "CWE-323": {
+      "status": "Incomplete"
+    },
+    "CWE-324": {
+      "status": "Draft"
+    },
+    "CWE-325": {
+      "status": "Draft"
+    },
+    "CWE-326": {
+      "status": "Draft"
+    },
+    "CWE-327": {
+      "status": "Draft"
+    },
+    "CWE-328": {
+      "status": "Draft"
+    },
+    "CWE-329": {
+      "status": "Draft"
+    },
+    "CWE-33": {
+      "status": "Incomplete"
+    },
+    "CWE-330": {
+      "status": "Stable"
+    },
+    "CWE-331": {
+      "status": "Draft"
+    },
+    "CWE-332": {
+      "status": "Draft"
+    },
+    "CWE-333": {
+      "status": "Draft"
+    },
+    "CWE-334": {
+      "status": "Draft"
+    },
+    "CWE-335": {
+      "status": "Draft"
+    },
+    "CWE-336": {
+      "status": "Draft"
+    },
+    "CWE-337": {
+      "status": "Draft"
+    },
+    "CWE-338": {
+      "status": "Draft"
+    },
+    "CWE-339": {
+      "status": "Draft"
+    },
+    "CWE-34": {
+      "status": "Incomplete"
+    },
+    "CWE-340": {
+      "status": "Incomplete"
+    },
+    "CWE-341": {
+      "status": "Draft"
+    },
+    "CWE-342": {
+      "status": "Draft"
+    },
+    "CWE-343": {
+      "status": "Draft"
+    },
+    "CWE-344": {
+      "status": "Draft"
+    },
+    "CWE-345": {
+      "status": "Draft"
+    },
+    "CWE-346": {
+      "status": "Draft"
+    },
+    "CWE-347": {
+      "status": "Draft"
+    },
+    "CWE-348": {
+      "status": "Draft"
+    },
+    "CWE-349": {
+      "status": "Draft"
+    },
+    "CWE-35": {
+      "status": "Incomplete"
+    },
+    "CWE-350": {
+      "status": "Draft"
+    },
+    "CWE-351": {
+      "status": "Draft"
+    },
+    "CWE-352": {
+      "status": "Stable"
+    },
+    "CWE-353": {
+      "status": "Draft"
+    },
+    "CWE-354": {
+      "status": "Draft"
+    },
+    "CWE-356": {
+      "status": "Incomplete"
+    },
+    "CWE-357": {
+      "status": "Draft"
+    },
+    "CWE-358": {
+      "status": "Draft"
+    },
+    "CWE-359": {
+      "status": "Incomplete"
+    },
+    "CWE-36": {
+      "status": "Draft"
+    },
+    "CWE-360": {
+      "status": "Incomplete"
+    },
+    "CWE-362": {
+      "status": "Draft"
+    },
+    "CWE-363": {
+      "status": "Draft"
+    },
+    "CWE-364": {
+      "status": "Incomplete"
+    },
+    "CWE-365": {
+      "status": "Deprecated"
+    },
+    "CWE-366": {
+      "status": "Draft"
+    },
+    "CWE-367": {
+      "status": "Incomplete"
+    },
+    "CWE-368": {
+      "status": "Draft"
+    },
+    "CWE-369": {
+      "status": "Draft"
+    },
+    "CWE-37": {
+      "status": "Draft"
+    },
+    "CWE-370": {
+      "status": "Draft"
+    },
+    "CWE-372": {
+      "status": "Draft"
+    },
+    "CWE-373": {
+      "status": "Deprecated"
+    },
+    "CWE-374": {
+      "status": "Draft"
+    },
+    "CWE-375": {
+      "status": "Draft"
+    },
+    "CWE-377": {
+      "status": "Deprecated"
+    },
+    "CWE-378": {
+      "status": "Draft"
+    },
+    "CWE-379": {
+      "status": "Incomplete"
+    },
+    "CWE-38": {
+      "status": "Draft"
+    },
+    "CWE-382": {
+      "status": "Draft"
+    },
+    "CWE-383": {
+      "status": "Draft"
+    },
+    "CWE-384": {
+      "status": "Incomplete"
+    },
+    "CWE-385": {
+      "status": "Incomplete"
+    },
+    "CWE-386": {
+      "status": "Draft"
+    },
+    "CWE-39": {
+      "status": "Draft"
+    },
+    "CWE-390": {
+      "status": "Draft"
+    },
+    "CWE-391": {
+      "status": "Deprecated"
+    },
+    "CWE-392": {
+      "status": "Draft"
+    },
+    "CWE-393": {
+      "status": "Draft"
+    },
+    "CWE-394": {
+      "status": "Draft"
+    },
+    "CWE-395": {
+      "status": "Draft"
+    },
+    "CWE-396": {
+      "status": "Draft"
+    },
+    "CWE-397": {
+      "status": "Draft"
+    },
+    "CWE-40": {
+      "status": "Draft"
+    },
+    "CWE-400": {
+      "status": "Draft"
+    },
+    "CWE-401": {
+      "status": "Draft"
+    },
+    "CWE-402": {
+      "status": "Draft"
+    },
+    "CWE-403": {
+      "status": "Draft"
+    },
+    "CWE-404": {
+      "status": "Draft"
+    },
+    "CWE-405": {
+      "status": "Incomplete"
+    },
+    "CWE-406": {
+      "status": "Incomplete"
+    },
+    "CWE-407": {
+      "status": "Incomplete"
+    },
+    "CWE-408": {
+      "status": "Draft"
+    },
+    "CWE-409": {
+      "status": "Incomplete"
+    },
+    "CWE-41": {
+      "status": "Incomplete"
+    },
+    "CWE-410": {
+      "status": "Incomplete"
+    },
+    "CWE-412": {
+      "status": "Incomplete"
+    },
+    "CWE-413": {
+      "status": "Draft"
+    },
+    "CWE-414": {
+      "status": "Draft"
+    },
+    "CWE-415": {
+      "status": "Draft"
+    },
+    "CWE-416": {
+      "status": "Stable"
+    },
+    "CWE-419": {
+      "status": "Draft"
+    },
+    "CWE-42": {
+      "status": "Incomplete"
+    },
+    "CWE-420": {
+      "status": "Draft"
+    },
+    "CWE-421": {
+      "status": "Draft"
+    },
+    "CWE-422": {
+      "status": "Draft"
+    },
+    "CWE-423": {
+      "status": "Deprecated"
+    },
+    "CWE-424": {
+      "status": "Draft"
+    },
+    "CWE-425": {
+      "status": "Incomplete"
+    },
+    "CWE-426": {
+      "status": "Stable"
+    },
+    "CWE-427": {
+      "status": "Draft"
+    },
+    "CWE-428": {
+      "status": "Draft"
+    },
+    "CWE-43": {
+      "status": "Incomplete"
+    },
+    "CWE-430": {
+      "status": "Incomplete"
+    },
+    "CWE-431": {
+      "status": "Draft"
+    },
+    "CWE-432": {
+      "status": "Draft"
+    },
+    "CWE-433": {
+      "status": "Incomplete"
+    },
+    "CWE-434": {
+      "status": "Draft"
+    },
+    "CWE-435": {
+      "status": "Draft"
+    },
+    "CWE-436": {
+      "status": "Incomplete"
+    },
+    "CWE-437": {
+      "status": "Incomplete"
+    },
+    "CWE-439": {
+      "status": "Draft"
+    },
+    "CWE-44": {
+      "status": "Incomplete"
+    },
+    "CWE-440": {
+      "status": "Draft"
+    },
+    "CWE-441": {
+      "status": "Draft"
+    },
+    "CWE-443": {
+      "status": "Deprecated"
+    },
+    "CWE-444": {
+      "status": "Incomplete"
+    },
+    "CWE-446": {
+      "status": "Incomplete"
+    },
+    "CWE-447": {
+      "status": "Draft"
+    },
+    "CWE-448": {
+      "status": "Draft"
+    },
+    "CWE-449": {
+      "status": "Incomplete"
+    },
+    "CWE-45": {
+      "status": "Incomplete"
+    },
+    "CWE-450": {
+      "status": "Draft"
+    },
+    "CWE-451": {
+      "status": "Draft"
+    },
+    "CWE-453": {
+      "status": "Draft"
+    },
+    "CWE-454": {
+      "status": "Draft"
+    },
+    "CWE-455": {
+      "status": "Draft"
+    },
+    "CWE-456": {
+      "status": "Draft"
+    },
+    "CWE-457": {
+      "status": "Draft"
+    },
+    "CWE-458": {
+      "status": "Deprecated"
+    },
+    "CWE-459": {
+      "status": "Draft"
+    },
+    "CWE-46": {
+      "status": "Incomplete"
+    },
+    "CWE-460": {
+      "status": "Draft"
+    },
+    "CWE-462": {
+      "status": "Incomplete"
+    },
+    "CWE-463": {
+      "status": "Incomplete"
+    },
+    "CWE-464": {
+      "status": "Incomplete"
+    },
+    "CWE-466": {
+      "status": "Draft"
+    },
+    "CWE-467": {
+      "status": "Draft"
+    },
+    "CWE-468": {
+      "status": "Incomplete"
+    },
+    "CWE-469": {
+      "status": "Draft"
+    },
+    "CWE-47": {
+      "status": "Incomplete"
+    },
+    "CWE-470": {
+      "status": "Draft"
+    },
+    "CWE-471": {
+      "status": "Draft"
+    },
+    "CWE-472": {
+      "status": "Draft"
+    },
+    "CWE-473": {
+      "status": "Draft"
+    },
+    "CWE-474": {
+      "status": "Draft"
+    },
+    "CWE-475": {
+      "status": "Incomplete"
+    },
+    "CWE-476": {
+      "status": "Stable"
+    },
+    "CWE-477": {
+      "status": "Draft"
+    },
+    "CWE-478": {
+      "status": "Draft"
+    },
+    "CWE-479": {
+      "status": "Draft"
+    },
+    "CWE-48": {
+      "status": "Incomplete"
+    },
+    "CWE-480": {
+      "status": "Draft"
+    },
+    "CWE-481": {
+      "status": "Draft"
+    },
+    "CWE-482": {
+      "status": "Draft"
+    },
+    "CWE-483": {
+      "status": "Draft"
+    },
+    "CWE-484": {
+      "status": "Draft"
+    },
+    "CWE-486": {
+      "status": "Draft"
+    },
+    "CWE-487": {
+      "status": "Incomplete"
+    },
+    "CWE-488": {
+      "status": "Draft"
+    },
+    "CWE-489": {
+      "status": "Draft"
+    },
+    "CWE-49": {
+      "status": "Incomplete"
+    },
+    "CWE-491": {
+      "status": "Draft"
+    },
+    "CWE-492": {
+      "status": "Draft"
+    },
+    "CWE-493": {
+      "status": "Draft"
+    },
+    "CWE-494": {
+      "status": "Draft"
+    },
+    "CWE-495": {
+      "status": "Draft"
+    },
+    "CWE-496": {
+      "status": "Incomplete"
+    },
+    "CWE-497": {
+      "status": "Incomplete"
+    },
+    "CWE-498": {
+      "status": "Draft"
+    },
+    "CWE-499": {
+      "status": "Draft"
+    },
+    "CWE-5": {
+      "status": "Draft"
+    },
+    "CWE-50": {
+      "status": "Incomplete"
+    },
+    "CWE-500": {
+      "status": "Draft"
+    },
+    "CWE-501": {
+      "status": "Draft"
+    },
+    "CWE-502": {
+      "status": "Draft"
+    },
+    "CWE-506": {
+      "status": "Incomplete"
+    },
+    "CWE-507": {
+      "status": "Incomplete"
+    },
+    "CWE-508": {
+      "status": "Incomplete"
+    },
+    "CWE-509": {
+      "status": "Incomplete"
+    },
+    "CWE-51": {
+      "status": "Incomplete"
+    },
+    "CWE-510": {
+      "status": "Incomplete"
+    },
+    "CWE-511": {
+      "status": "Incomplete"
+    },
+    "CWE-512": {
+      "status": "Incomplete"
+    },
+    "CWE-514": {
+      "status": "Incomplete"
+    },
+    "CWE-515": {
+      "status": "Incomplete"
+    },
+    "CWE-516": {
+      "status": "Deprecated"
+    },
+    "CWE-52": {
+      "status": "Incomplete"
+    },
+    "CWE-520": {
+      "status": "Incomplete"
+    },
+    "CWE-521": {
+      "status": "Draft"
+    },
+    "CWE-522": {
+      "status": "Incomplete"
+    },
+    "CWE-523": {
+      "status": "Incomplete"
+    },
+    "CWE-524": {
+      "status": "Incomplete"
+    },
+    "CWE-525": {
+      "status": "Incomplete"
+    },
+    "CWE-526": {
+      "status": "Incomplete"
+    },
+    "CWE-527": {
+      "status": "Incomplete"
+    },
+    "CWE-528": {
+      "status": "Draft"
+    },
+    "CWE-529": {
+      "status": "Incomplete"
+    },
+    "CWE-53": {
+      "status": "Incomplete"
+    },
+    "CWE-530": {
+      "status": "Incomplete"
+    },
+    "CWE-531": {
+      "status": "Incomplete"
+    },
+    "CWE-532": {
+      "status": "Incomplete"
+    },
+    "CWE-533": {
+      "status": "Deprecated"
+    },
+    "CWE-534": {
+      "status": "Deprecated"
+    },
+    "CWE-535": {
+      "status": "Incomplete"
+    },
+    "CWE-536": {
+      "status": "Incomplete"
+    },
+    "CWE-537": {
+      "status": "Incomplete"
+    },
+    "CWE-538": {
+      "status": "Draft"
+    },
+    "CWE-539": {
+      "status": "Incomplete"
+    },
+    "CWE-54": {
+      "status": "Incomplete"
+    },
+    "CWE-540": {
+      "status": "Incomplete"
+    },
+    "CWE-541": {
+      "status": "Incomplete"
+    },
+    "CWE-542": {
+      "status": "Deprecated"
+    },
+    "CWE-543": {
+      "status": "Incomplete"
+    },
+    "CWE-544": {
+      "status": "Draft"
+    },
+    "CWE-545": {
+      "status": "Deprecated"
+    },
+    "CWE-546": {
+      "status": "Draft"
+    },
+    "CWE-547": {
+      "status": "Draft"
+    },
+    "CWE-548": {
+      "status": "Draft"
+    },
+    "CWE-549": {
+      "status": "Draft"
+    },
+    "CWE-55": {
+      "status": "Incomplete"
+    },
+    "CWE-550": {
+      "status": "Incomplete"
+    },
+    "CWE-551": {
+      "status": "Incomplete"
+    },
+    "CWE-552": {
+      "status": "Draft"
+    },
+    "CWE-553": {
+      "status": "Incomplete"
+    },
+    "CWE-554": {
+      "status": "Draft"
+    },
+    "CWE-555": {
+      "status": "Draft"
+    },
+    "CWE-556": {
+      "status": "Incomplete"
+    },
+    "CWE-558": {
+      "status": "Draft"
+    },
+    "CWE-56": {
+      "status": "Incomplete"
+    },
+    "CWE-560": {
+      "status": "Draft"
+    },
+    "CWE-561": {
+      "status": "Draft"
+    },
+    "CWE-562": {
+      "status": "Draft"
+    },
+    "CWE-563": {
+      "status": "Draft"
+    },
+    "CWE-564": {
+      "status": "Incomplete"
+    },
+    "CWE-565": {
+      "status": "Incomplete"
+    },
+    "CWE-566": {
+      "status": "Incomplete"
+    },
+    "CWE-567": {
+      "status": "Draft"
+    },
+    "CWE-568": {
+      "status": "Draft"
+    },
+    "CWE-57": {
+      "status": "Incomplete"
+    },
+    "CWE-570": {
+      "status": "Draft"
+    },
+    "CWE-571": {
+      "status": "Draft"
+    },
+    "CWE-572": {
+      "status": "Draft"
+    },
+    "CWE-573": {
+      "status": "Draft"
+    },
+    "CWE-574": {
+      "status": "Draft"
+    },
+    "CWE-575": {
+      "status": "Draft"
+    },
+    "CWE-576": {
+      "status": "Draft"
+    },
+    "CWE-577": {
+      "status": "Draft"
+    },
+    "CWE-578": {
+      "status": "Draft"
+    },
+    "CWE-579": {
+      "status": "Draft"
+    },
+    "CWE-58": {
+      "status": "Incomplete"
+    },
+    "CWE-580": {
+      "status": "Draft"
+    },
+    "CWE-581": {
+      "status": "Draft"
+    },
+    "CWE-582": {
+      "status": "Draft"
+    },
+    "CWE-583": {
+      "status": "Incomplete"
+    },
+    "CWE-584": {
+      "status": "Draft"
+    },
+    "CWE-585": {
+      "status": "Draft"
+    },
+    "CWE-586": {
+      "status": "Draft"
+    },
+    "CWE-587": {
+      "status": "Draft"
+    },
+    "CWE-588": {
+      "status": "Incomplete"
+    },
+    "CWE-589": {
+      "status": "Incomplete"
+    },
+    "CWE-59": {
+      "status": "Draft"
+    },
+    "CWE-590": {
+      "status": "Incomplete"
+    },
+    "CWE-591": {
+      "status": "Draft"
+    },
+    "CWE-592": {
+      "status": "Deprecated"
+    },
+    "CWE-593": {
+      "status": "Draft"
+    },
+    "CWE-594": {
+      "status": "Incomplete"
+    },
+    "CWE-595": {
+      "status": "Incomplete"
+    },
+    "CWE-596": {
+      "status": "Deprecated"
+    },
+    "CWE-597": {
+      "status": "Draft"
+    },
+    "CWE-598": {
+      "status": "Draft"
+    },
+    "CWE-599": {
+      "status": "Incomplete"
+    },
+    "CWE-6": {
+      "status": "Incomplete"
+    },
+    "CWE-600": {
+      "status": "Draft"
+    },
+    "CWE-601": {
+      "status": "Draft"
+    },
+    "CWE-602": {
+      "status": "Draft"
+    },
+    "CWE-603": {
+      "status": "Draft"
+    },
+    "CWE-605": {
+      "status": "Draft"
+    },
+    "CWE-606": {
+      "status": "Draft"
+    },
+    "CWE-607": {
+      "status": "Draft"
+    },
+    "CWE-608": {
+      "status": "Draft"
+    },
+    "CWE-609": {
+      "status": "Draft"
+    },
+    "CWE-61": {
+      "status": "Incomplete"
+    },
+    "CWE-610": {
+      "status": "Draft"
+    },
+    "CWE-611": {
+      "status": "Draft"
+    },
+    "CWE-612": {
+      "status": "Draft"
+    },
+    "CWE-613": {
+      "status": "Deprecated"
+    },
+    "CWE-614": {
+      "status": "Draft"
+    },
+    "CWE-615": {
+      "status": "Incomplete"
+    },
+    "CWE-616": {
+      "status": "Incomplete"
+    },
+    "CWE-617": {
+      "status": "Draft"
+    },
+    "CWE-618": {
+      "status": "Incomplete"
+    },
+    "CWE-619": {
+      "status": "Incomplete"
+    },
+    "CWE-62": {
+      "status": "Incomplete"
+    },
+    "CWE-620": {
+      "status": "Draft"
+    },
+    "CWE-621": {
+      "status": "Incomplete"
+    },
+    "CWE-622": {
+      "status": "Draft"
+    },
+    "CWE-623": {
+      "status": "Draft"
+    },
+    "CWE-624": {
+      "status": "Incomplete"
+    },
+    "CWE-625": {
+      "status": "Draft"
+    },
+    "CWE-626": {
+      "status": "Draft"
+    },
+    "CWE-627": {
+      "status": "Incomplete"
+    },
+    "CWE-628": {
+      "status": "Draft"
+    },
+    "CWE-636": {
+      "status": "Draft"
+    },
+    "CWE-637": {
+      "status": "Draft"
+    },
+    "CWE-638": {
+      "status": "Draft"
+    },
+    "CWE-639": {
+      "status": "Incomplete"
+    },
+    "CWE-64": {
+      "status": "Incomplete"
+    },
+    "CWE-640": {
+      "status": "Incomplete"
+    },
+    "CWE-641": {
+      "status": "Incomplete"
+    },
+    "CWE-642": {
+      "status": "Draft"
+    },
+    "CWE-643": {
+      "status": "Incomplete"
+    },
+    "CWE-644": {
+      "status": "Incomplete"
+    },
+    "CWE-645": {
+      "status": "Incomplete"
+    },
+    "CWE-646": {
+      "status": "Incomplete"
+    },
+    "CWE-647": {
+      "status": "Incomplete"
+    },
+    "CWE-648": {
+      "status": "Incomplete"
+    },
+    "CWE-649": {
+      "status": "Incomplete"
+    },
+    "CWE-65": {
+      "status": "Incomplete"
+    },
+    "CWE-650": {
+      "status": "Incomplete"
+    },
+    "CWE-651": {
+      "status": "Incomplete"
+    },
+    "CWE-652": {
+      "status": "Incomplete"
+    },
+    "CWE-653": {
+      "status": "Draft"
+    },
+    "CWE-654": {
+      "status": "Draft"
+    },
+    "CWE-655": {
+      "status": "Draft"
+    },
+    "CWE-656": {
+      "status": "Draft"
+    },
+    "CWE-657": {
+      "status": "Draft"
+    },
+    "CWE-66": {
+      "status": "Draft"
+    },
+    "CWE-662": {
+      "status": "Draft"
+    },
+    "CWE-663": {
+      "status": "Draft"
+    },
+    "CWE-664": {
+      "status": "Draft"
+    },
+    "CWE-665": {
+      "status": "Draft"
+    },
+    "CWE-666": {
+      "status": "Draft"
+    },
+    "CWE-667": {
+      "status": "Draft"
+    },
+    "CWE-668": {
+      "status": "Draft"
+    },
+    "CWE-669": {
+      "status": "Draft"
+    },
+    "CWE-67": {
+      "status": "Incomplete"
+    },
+    "CWE-670": {
+      "status": "Draft"
+    },
+    "CWE-671": {
+      "status": "Draft"
+    },
+    "CWE-672": {
+      "status": "Draft"
+    },
+    "CWE-673": {
+      "status": "Draft"
+    },
+    "CWE-674": {
+      "status": "Draft"
+    },
+    "CWE-675": {
+      "status": "Draft"
+    },
+    "CWE-676": {
+      "status": "Draft"
+    },
+    "CWE-680": {
+      "status": "Draft"
+    },
+    "CWE-681": {
+      "status": "Draft"
+    },
+    "CWE-682": {
+      "status": "Draft"
+    },
+    "CWE-683": {
+      "status": "Draft"
+    },
+    "CWE-684": {
+      "status": "Draft"
+    },
+    "CWE-685": {
+      "status": "Draft"
+    },
+    "CWE-686": {
+      "status": "Draft"
+    },
+    "CWE-687": {
+      "status": "Draft"
+    },
+    "CWE-688": {
+      "status": "Draft"
+    },
+    "CWE-689": {
+      "status": "Draft"
+    },
+    "CWE-69": {
+      "status": "Incomplete"
+    },
+    "CWE-690": {
+      "status": "Draft"
+    },
+    "CWE-691": {
+      "status": "Draft"
+    },
+    "CWE-692": {
+      "status": "Draft"
+    },
+    "CWE-693": {
+      "status": "Draft"
+    },
+    "CWE-694": {
+      "status": "Incomplete"
+    },
+    "CWE-695": {
+      "status": "Incomplete"
+    },
+    "CWE-696": {
+      "status": "Incomplete"
+    },
+    "CWE-697": {
+      "status": "Incomplete"
+    },
+    "CWE-698": {
+      "status": "Incomplete"
+    },
+    "CWE-7": {
+      "status": "Incomplete"
+    },
+    "CWE-703": {
+      "status": "Incomplete"
+    },
+    "CWE-704": {
+      "status": "Incomplete"
+    },
+    "CWE-705": {
+      "status": "Incomplete"
+    },
+    "CWE-706": {
+      "status": "Incomplete"
+    },
+    "CWE-707": {
+      "status": "Incomplete"
+    },
+    "CWE-708": {
+      "status": "Incomplete"
+    },
+    "CWE-71": {
+      "status": "Deprecated"
+    },
+    "CWE-710": {
+      "status": "Incomplete"
+    },
+    "CWE-72": {
+      "status": "Incomplete"
+    },
+    "CWE-73": {
+      "status": "Draft"
+    },
+    "CWE-732": {
+      "status": "Draft"
+    },
+    "CWE-733": {
+      "status": "Incomplete"
+    },
+    "CWE-74": {
+      "status": "Incomplete"
+    },
+    "CWE-749": {
+      "status": "Incomplete"
+    },
+    "CWE-75": {
+      "status": "Draft"
+    },
+    "CWE-754": {
+      "status": "Incomplete"
+    },
+    "CWE-755": {
+      "status": "Incomplete"
+    },
+    "CWE-756": {
+      "status": "Incomplete"
+    },
+    "CWE-757": {
+      "status": "Incomplete"
+    },
+    "CWE-758": {
+      "status": "Incomplete"
+    },
+    "CWE-759": {
+      "status": "Incomplete"
+    },
+    "CWE-76": {
+      "status": "Draft"
+    },
+    "CWE-760": {
+      "status": "Incomplete"
+    },
+    "CWE-761": {
+      "status": "Incomplete"
+    },
+    "CWE-762": {
+      "status": "Incomplete"
+    },
+    "CWE-763": {
+      "status": "Incomplete"
+    },
+    "CWE-764": {
+      "status": "Incomplete"
+    },
+    "CWE-765": {
+      "status": "Incomplete"
+    },
+    "CWE-766": {
+      "status": "Incomplete"
+    },
+    "CWE-767": {
+      "status": "Incomplete"
+    },
+    "CWE-768": {
+      "status": "Incomplete"
+    },
+    "CWE-769": {
+      "status": "Deprecated"
+    },
+    "CWE-77": {
+      "status": "Draft"
+    },
+    "CWE-770": {
+      "status": "Incomplete"
+    },
+    "CWE-771": {
+      "status": "Incomplete"
+    },
+    "CWE-772": {
+      "status": "Draft"
+    },
+    "CWE-773": {
+      "status": "Incomplete"
+    },
+    "CWE-774": {
+      "status": "Incomplete"
+    },
+    "CWE-775": {
+      "status": "Incomplete"
+    },
+    "CWE-776": {
+      "status": "Draft"
+    },
+    "CWE-777": {
+      "status": "Incomplete"
+    },
+    "CWE-778": {
+      "status": "Draft"
+    },
+    "CWE-779": {
+      "status": "Draft"
+    },
+    "CWE-78": {
+      "status": "Stable"
+    },
+    "CWE-780": {
+      "status": "Incomplete"
+    },
+    "CWE-781": {
+      "status": "Draft"
+    },
+    "CWE-782": {
+      "status": "Draft"
+    },
+    "CWE-783": {
+      "status": "Draft"
+    },
+    "CWE-784": {
+      "status": "Draft"
+    },
+    "CWE-785": {
+      "status": "Incomplete"
+    },
+    "CWE-786": {
+      "status": "Incomplete"
+    },
+    "CWE-787": {
+      "status": "Draft"
+    },
+    "CWE-788": {
+      "status": "Incomplete"
+    },
+    "CWE-789": {
+      "status": "Draft"
+    },
+    "CWE-79": {
+      "status": "Stable"
+    },
+    "CWE-790": {
+      "status": "Incomplete"
+    },
+    "CWE-791": {
+      "status": "Incomplete"
+    },
+    "CWE-792": {
+      "status": "Incomplete"
+    },
+    "CWE-793": {
+      "status": "Incomplete"
+    },
+    "CWE-794": {
+      "status": "Incomplete"
+    },
+    "CWE-795": {
+      "status": "Incomplete"
+    },
+    "CWE-796": {
+      "status": "Incomplete"
+    },
+    "CWE-797": {
+      "status": "Incomplete"
+    },
+    "CWE-798": {
+      "status": "Draft"
+    },
+    "CWE-799": {
+      "status": "Incomplete"
+    },
+    "CWE-8": {
+      "status": "Incomplete"
+    },
+    "CWE-80": {
+      "status": "Incomplete"
+    },
+    "CWE-804": {
+      "status": "Incomplete"
+    },
+    "CWE-805": {
+      "status": "Incomplete"
+    },
+    "CWE-806": {
+      "status": "Incomplete"
+    },
+    "CWE-807": {
+      "status": "Incomplete"
+    },
+    "CWE-81": {
+      "status": "Incomplete"
+    },
+    "CWE-82": {
+      "status": "Incomplete"
+    },
+    "CWE-820": {
+      "status": "Incomplete"
+    },
+    "CWE-821": {
+      "status": "Incomplete"
+    },
+    "CWE-822": {
+      "status": "Incomplete"
+    },
+    "CWE-823": {
+      "status": "Incomplete"
+    },
+    "CWE-824": {
+      "status": "Incomplete"
+    },
+    "CWE-825": {
+      "status": "Incomplete"
+    },
+    "CWE-826": {
+      "status": "Incomplete"
+    },
+    "CWE-827": {
+      "status": "Incomplete"
+    },
+    "CWE-828": {
+      "status": "Incomplete"
+    },
+    "CWE-829": {
+      "status": "Incomplete"
+    },
+    "CWE-83": {
+      "status": "Draft"
+    },
+    "CWE-830": {
+      "status": "Incomplete"
+    },
+    "CWE-831": {
+      "status": "Incomplete"
+    },
+    "CWE-832": {
+      "status": "Incomplete"
+    },
+    "CWE-833": {
+      "status": "Incomplete"
+    },
+    "CWE-834": {
+      "status": "Incomplete"
+    },
+    "CWE-835": {
+      "status": "Incomplete"
+    },
+    "CWE-836": {
+      "status": "Incomplete"
+    },
+    "CWE-837": {
+      "status": "Incomplete"
+    },
+    "CWE-838": {
+      "status": "Incomplete"
+    },
+    "CWE-839": {
+      "status": "Incomplete"
+    },
+    "CWE-84": {
+      "status": "Draft"
+    },
+    "CWE-841": {
+      "status": "Incomplete"
+    },
+    "CWE-842": {
+      "status": "Incomplete"
+    },
+    "CWE-843": {
+      "status": "Incomplete"
+    },
+    "CWE-85": {
+      "status": "Draft"
+    },
+    "CWE-86": {
+      "status": "Draft"
+    },
+    "CWE-862": {
+      "status": "Incomplete"
+    },
+    "CWE-863": {
+      "status": "Incomplete"
+    },
+    "CWE-87": {
+      "status": "Draft"
+    },
+    "CWE-88": {
+      "status": "Draft"
+    },
+    "CWE-89": {
+      "status": "Stable"
+    },
+    "CWE-9": {
+      "status": "Draft"
+    },
+    "CWE-90": {
+      "status": "Draft"
+    },
+    "CWE-908": {
+      "status": "Incomplete"
+    },
+    "CWE-909": {
+      "status": "Incomplete"
+    },
+    "CWE-91": {
+      "status": "Draft"
+    },
+    "CWE-910": {
+      "status": "Incomplete"
+    },
+    "CWE-911": {
+      "status": "Incomplete"
+    },
+    "CWE-912": {
+      "status": "Incomplete"
+    },
+    "CWE-913": {
+      "status": "Incomplete"
+    },
+    "CWE-914": {
+      "status": "Incomplete"
+    },
+    "CWE-915": {
+      "status": "Incomplete"
+    },
+    "CWE-916": {
+      "status": "Incomplete"
+    },
+    "CWE-917": {
+      "status": "Incomplete"
+    },
+    "CWE-918": {
+      "status": "Incomplete"
+    },
+    "CWE-92": {
+      "status": "Deprecated"
+    },
+    "CWE-920": {
+      "status": "Incomplete"
+    },
+    "CWE-921": {
+      "status": "Incomplete"
+    },
+    "CWE-922": {
+      "status": "Incomplete"
+    },
+    "CWE-923": {
+      "status": "Incomplete"
+    },
+    "CWE-924": {
+      "status": "Incomplete"
+    },
+    "CWE-925": {
+      "status": "Incomplete"
+    },
+    "CWE-926": {
+      "status": "Incomplete"
+    },
+    "CWE-927": {
+      "status": "Incomplete"
+    },
+    "CWE-93": {
+      "status": "Draft"
+    },
+    "CWE-939": {
+      "status": "Incomplete"
+    },
+    "CWE-94": {
+      "status": "Draft"
+    },
+    "CWE-940": {
+      "status": "Incomplete"
+    },
+    "CWE-941": {
+      "status": "Incomplete"
+    },
+    "CWE-942": {
+      "status": "Incomplete"
+    },
+    "CWE-943": {
+      "status": "Incomplete"
+    },
+    "CWE-95": {
+      "status": "Incomplete"
+    },
+    "CWE-96": {
+      "status": "Draft"
+    },
+    "CWE-97": {
+      "status": "Draft"
+    },
+    "CWE-98": {
+      "status": "Draft"
+    },
+    "CWE-99": {
+      "status": "Draft"
+    }
+  }
+}

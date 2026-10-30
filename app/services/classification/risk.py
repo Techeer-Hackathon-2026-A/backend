@@ -1,32 +1,24 @@
 """[백엔드 C] 위험도 산정·우선순위 정렬·등급 계산.
 
-등급은 LLM이 아니라 정해진 공식으로 계산한다 (같은 코드 → 같은 등급).
-TODO(C): 가중치 튜닝, 테스트 코드 경로 감점 등
+CVSS 우선 평가 결과를 사용한다. 경로 감점이나 도구별 가중치는 적용하지 않는다.
 """
 
 from collections import Counter
 
-from app.schemas.finding import SEVERITY_WEIGHT, Category, ClassifiedFinding, Severity
-
-CATEGORY_BONUS = {Category.SECRET: 1.2, Category.SAST: 1.0, Category.SCA: 0.9}
-TEST_PATH_HINTS = ("test", "tests", "__tests__", "spec", "fixtures", "examples")
+from app.schemas.finding import ClassifiedFinding, Severity
 
 
 def risk_score(f: ClassifiedFinding) -> float:
-    score = SEVERITY_WEIGHT[f.severity] * 10 * CATEGORY_BONUS[f.category]
-    if f.duplicate_count > 1:  # 여러 도구가 동시에 잡으면 신뢰도 ↑
-        score *= 1.1
-    if any(h in f.location.file_path.lower().split("/") for h in TEST_PATH_HINTS):
-        score *= 0.5
-    return round(min(score, 100.0), 1)
+    """기존 API의 0~100 표시 값. 우선순위는 등급을 기준으로 한다."""
+    return f.risk_score
 
 
 def prioritize(findings: list[ClassifiedFinding]) -> list[ClassifiedFinding]:
-    for f in findings:
-        f.risk_score = risk_score(f)
-    ordered = sorted(findings, key=lambda f: (-f.risk_score, f.location.file_path, f.location.start_line))
-    for i, f in enumerate(ordered, start=1):
-        f.priority = i
+    from app.services.classification.core.service import LEVEL_RANK
+
+    ordered = sorted(findings, key=lambda f: (LEVEL_RANK[f.severity.value], f.fingerprint))
+    for index, finding in enumerate(ordered, 1):
+        finding.priority = index
     return ordered
 
 
@@ -41,13 +33,16 @@ def calculate_grade(findings: list[ClassifiedFinding]) -> str:
         return "C"
     if Severity.LOW in severities:
         return "B"
-    return "A"
+    return "U" if Severity.UNKNOWN in severities else "A"
 
 
 def summarize(findings: list[ClassifiedFinding]) -> dict:
     return {
         "total": len(findings),
+        "raw_total": sum(f.duplicate_count for f in findings),
+        "owasp_version": "2025",
+        "by_cwe": dict(Counter(c for f in findings for c in f.cwe)),
         "by_severity": dict(Counter(f.severity.value for f in findings)),
         "by_category": dict(Counter(f.category.value for f in findings)),
-        "owasp_matrix": dict(Counter(f.owasp_top10 for f in findings if f.owasp_top10)),
+        "owasp_matrix": dict(Counter(category for f in findings for category in f.owasp)),
     }

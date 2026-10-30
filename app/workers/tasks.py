@@ -80,15 +80,20 @@ def scan_repo(scan_id: int) -> int:
         classified = classify(normalized)
         db.add_all(_to_entity(scan.id, f) for f in classified)
 
-        scan.grade = calculate_grade(classified)
-        scan.summary = {**summarize(classified), "tool_errors": tool_errors}
+        scan.grade = None if tool_errors else calculate_grade(classified)
+        scan.summary = {
+            **summarize(classified),
+            "tool_errors": {name: "도구 실행 실패" for name in tool_errors},
+            "complete": not bool(tool_errors),
+        }
         scan.finished_at = datetime.now(UTC)
-        _update_scan(db, scan, ScanStatus.COMPLETED, 100, "완료")
+        final_status = ScanStatus.FAILED if len(tool_errors) >= 3 else ScanStatus.COMPLETED
+        _update_scan(db, scan, final_status, 100, "일부 도구 실패" if tool_errors else "완료")
         return scan_id
-    except Exception as e:
-        logger.exception("scan %s failed", scan_id)
+    except Exception:
+        logger.error("scan %s failed", scan_id)
         db.rollback()
-        scan.error_message = str(e)[:2000]
+        scan.error_message = "분석 처리 실패"
         scan.finished_at = datetime.now(UTC)
         _update_scan(db, scan, ScanStatus.FAILED, 100, "실패")
         raise
