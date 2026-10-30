@@ -6,6 +6,27 @@ from types import SimpleNamespace
 import pytest
 
 
+def test_historical_2021_results_are_not_reclassified(client, stored):
+    from app.core.database import SessionLocal
+    from app.models import Finding, Scan
+
+    with SessionLocal() as db:
+        row = db.query(Finding).filter(Finding.scan_id == stored).first()
+        row.cwe = ["CWE-89"]
+        row.owasp = ["A03:2021"]
+        row.owasp_top10 = "A03:2021-Injection"
+        row.raw = {}
+        identifier = row.id
+        scan = db.get(Scan, stored)
+        scan.summary = {"total": 1, "owasp_matrix": {"A03:2021-Injection": 1}}
+        db.commit()
+    detail = client.get(f"/api/v1/findings/{identifier}").json()
+    assert detail["owasp_top10"] == "A03:2021"
+    assert detail["owasp"] == ["A03:2021"]
+    result = client.get(f"/api/v1/scans/{stored}/report").json()
+    assert result["owasp_matrix"] == {"A03:2021": 1}
+
+
 @pytest.fixture
 def stored(client, mock_findings):
     from app.core.database import SessionLocal

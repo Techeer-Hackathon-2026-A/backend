@@ -1,5 +1,6 @@
 """공개·DB·D 경계에서 원본을 직접 전달하지 않는다."""
 
+import re
 from functools import lru_cache
 
 from pydantic import ValidationError
@@ -53,8 +54,20 @@ def public_entity(entity, model):
             values["dependency"] = None
     catalog, lookup = _trusted()
     values["cwe"] = [c for c in values["cwe"] if c in catalog]
-    categories = sorted({category for c in values["cwe"] for category in lookup.get(c, ())})
-    values["owasp_top10"] = next(iter(categories), None)
+    # 조회 시점에 재분류하지 않는다. 과거 스캔은 저장 당시의 버전을 유지한다.
+    stored = getattr(entity, "owasp", []) or []
+    categories = sorted(
+        {
+            category
+            for category in stored
+            if isinstance(category, str) and re.fullmatch(r"A(?:0[1-9]|10):202[15]", category)
+        }
+    )
+    representative = values.get("owasp_top10")
+    if representative:
+        match = re.match(r"^(A(?:0[1-9]|10):202[15])(?:-|$)", representative)
+        representative = match[1] if match else None
+    values["owasp_top10"] = representative if representative in categories else next(iter(categories), None)
     if "owasp" in values:
         values["owasp"] = categories
         # 공급망 메타데이터의 자유 문자열도 공개하지 않는다.

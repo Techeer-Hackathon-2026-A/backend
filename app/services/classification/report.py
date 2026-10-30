@@ -7,14 +7,20 @@ from app.services.classification.safety import public_entity
 
 def stored_report(scan, top_findings):
     summary = scan.summary or {}
-    categories = {f"A{number:02d}:2025" for number in range(1, 11)}
+    categories = {f"A{number:02d}:{year}" for number in range(1, 11) for year in (2021, 2025)}
 
     def counts(name, allowed):
-        return {
-            key: value
-            for key, value in summary.get(name, {}).items()
-            if key in allowed and isinstance(value, int) and value >= 0
-        }
+        import re
+
+        result = {}
+        for key, value in summary.get(name, {}).items():
+            safe_key = key
+            if name == "owasp_matrix" and isinstance(key, str):
+                match = re.match(r"^(A(?:0[1-9]|10):202[15])(?:-|$)", key)
+                safe_key = match[1] if match else None
+            if safe_key in allowed and isinstance(value, int) and value >= 0:
+                result[safe_key] = result.get(safe_key, 0) + value
+        return result
 
     total = summary.get("total", 0)
     return SecurityReport(
