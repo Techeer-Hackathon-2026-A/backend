@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     app_name: str = "Code Security Scanner API"
     environment: str = "local"
     cors_origins: list[str] = ["http://localhost:5173"]
+    # 설정하면 /api/v1 요청마다 Authorization: Bearer <키> 가 있어야 한다 (프론트 서버만 부르게)
+    backend_api_key: str = ""
 
     # Infra
     database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/scanner"

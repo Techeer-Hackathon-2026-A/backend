@@ -3,6 +3,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
+from app.core.auth import Viewer, get_viewer, require_read
 from app.core.database import get_db
 from app.schemas.api import FindingDetail, FindingOut, SecurityReport
 from app.services.classification.http import SafeReportRoute
@@ -12,17 +13,30 @@ from app.services.classification.safety import public_entity
 
 router = APIRouter(tags=["reports"], route_class=SafeReportRoute)
 
+SCAN_NOT_FOUND = "스캔을 찾을 수 없습니다"
+FINDING_NOT_FOUND = "취약점을 찾을 수 없습니다"
+
 
 def get_report_repository(db: Session = Depends(get_db)) -> ReportRepository:
     """A의 사용자별 접근 제한 저장소로 교체할 수 있는 의존성 경계."""
     return SQLReportRepository(db)
 
 
-@router.get("/scans/{scan_id}/report", response_model=SecurityReport)
-def get_report(scan_id: int, repository: ReportRepository = Depends(get_report_repository)) -> SecurityReport:
+def _readable_scan(repository: ReportRepository, scan_id: int, viewer: Viewer | None):
     scan = repository.scan(scan_id)
     if scan is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "스캔을 찾을 수 없습니다")
+        raise HTTPException(status.HTTP_404_NOT_FOUND, SCAN_NOT_FOUND)
+    require_read(viewer, scan.project, SCAN_NOT_FOUND)
+    return scan
+
+
+@router.get("/scans/{scan_id}/report", response_model=SecurityReport)
+def get_report(
+    scan_id: int,
+    repository: ReportRepository = Depends(get_report_repository),
+    viewer: Viewer | None = Depends(get_viewer),
+) -> SecurityReport:
+    scan = _readable_scan(repository, scan_id, viewer)
     top = repository.findings(scan_id, limit=10)
     return stored_report(scan, top)
 
@@ -36,16 +50,21 @@ def list_findings(
     limit: int = Query(100, ge=1, le=1000),
     offset: int = Query(0, ge=0),
     repository: ReportRepository = Depends(get_report_repository),
+    viewer: Viewer | None = Depends(get_viewer),
 ) -> list[FindingOut]:
-    if repository.scan(scan_id) is None:
-        raise HTTPException(404, "스캔을 찾을 수 없습니다")
+    _readable_scan(repository, scan_id, viewer)
     rows = repository.findings(scan_id, severity=severity, category=category, owasp=owasp, limit=limit, offset=offset)
     return [public_entity(finding, FindingOut) for finding in rows]
 
 
 @router.get("/findings/{finding_id}", response_model=FindingDetail)
-def get_finding(finding_id: int, repository: ReportRepository = Depends(get_report_repository)) -> FindingDetail:
+def get_finding(
+    finding_id: int,
+    repository: ReportRepository = Depends(get_report_repository),
+    viewer: Viewer | None = Depends(get_viewer),
+) -> FindingDetail:
     finding = repository.finding(finding_id)
     if finding is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "취약점을 찾을 수 없습니다")
+        raise HTTPException(status.HTTP_404_NOT_FOUND, FINDING_NOT_FOUND)
+    require_read(viewer, finding.scan.project, FINDING_NOT_FOUND)
     return public_entity(finding, FindingDetail)
