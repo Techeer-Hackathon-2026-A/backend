@@ -6,7 +6,7 @@ projects 1 ─ N scans 1 ─ N findings 1 ─ N fixes
 
 from datetime import datetime
 
-from sqlalchemy import JSON, Boolean, DateTime, Enum, Float, ForeignKey, Integer, String, Text, func
+from sqlalchemy import JSON, BigInteger, Boolean, DateTime, Enum, Float, ForeignKey, Integer, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
@@ -42,6 +42,7 @@ class Scan(TimestampMixin, Base):
     summary: Mapped[dict | None] = mapped_column(JSON)  # 심각도별 개수 등
     error_message: Mapped[str | None] = mapped_column(Text)
     celery_task_id: Mapped[str | None] = mapped_column(String(100))
+    requested_by: Mapped[int | None] = mapped_column(BigInteger, index=True)  # 요청한 GitHub 사용자 ID (익명이면 None)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     project: Mapped[Project] = relationship(back_populates="scans")

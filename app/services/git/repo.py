@@ -87,7 +87,7 @@ class ClonedRepo:
 def normalize_repo_url(repo_url: str) -> str:
     """https://github.com/owner/repo 형태로 정규화한다. GitHub 공개 URL만 허용한다."""
     match = _GITHUB_URL.match(repo_url.strip())
-    if not match or match[2] in ("", ".", ".."):
+    if not match or match[1] in (".", "..") or match[2] in ("", ".", ".."):
         raise ValueError("https://github.com/owner/repo 형식의 GitHub 레포 주소만 지원합니다.")
     return f"https://github.com/{match[1]}/{match[2].removesuffix('.git')}"
 

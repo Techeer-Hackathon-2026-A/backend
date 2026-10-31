@@ -1,6 +1,6 @@
 from collections.abc import Generator
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 from app.core.config import get_settings
@@ -27,3 +27,7 @@ def init_db() -> None:
     from app import models  # noqa: F401  모델 등록용 import
 
     Base.metadata.create_all(bind=engine)
+    # create_all 은 기존 테이블에 컬럼을 붙이지 않으므로, 나중에 생긴 컬럼만 직접 추가한다
+    if "requested_by" not in {c["name"] for c in inspect(engine).get_columns("scans")}:
+        with engine.begin() as conn:
+            conn.execute(text("ALTER TABLE scans ADD COLUMN requested_by BIGINT"))

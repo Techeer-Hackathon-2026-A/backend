@@ -119,6 +119,16 @@ tests/
 | POST | `/api/v1/scans/{scan_id}/pull-requests` | 선택한 수정안으로 PR 생성 | A |
 | GET | `/api/v1/scans/{scan_id}/pull-requests` | PR 목록 | A |
 
+### 인증 · 권한 (`app/core/auth.py`)
+
+- `BACKEND_API_KEY` 를 설정하면 모든 `/api/v1` 요청에 `Authorization: Bearer <키>` 가 있어야 합니다 (프론트 서버만 부르게).
+- 프론트 서버는 로그인한 사용자의 GitHub 토큰을 `X-GitHub-Token` 으로 넘깁니다. 없으면 익명입니다.
+- 클론·푸시는 서버 `GITHUB_TOKEN` 이 하지만, 권한은 요청한 사람이 GitHub 에서 가진 권한으로만 정합니다.
+  - 조회·스캔 요청: 그 레포를 볼 수 있어야 함 (익명은 공개 레포만). 볼 수 없으면 404
+  - 수정안 생성: 로그인 + 조회 권한 (없으면 401)
+  - PR 생성: 로그인 + 푸시 권한 (없으면 403)
+  - 스캔 목록: 내가 요청한 스캔만 (익명은 빈 목록)
+
 스캔 상태: `pending → cloning → detecting → classifying → completed` (실패 시 `failed`)
 
 ## 역할 분담

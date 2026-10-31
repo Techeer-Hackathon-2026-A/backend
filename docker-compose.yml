@@ -2,8 +2,9 @@ services:
   api:
     build: .
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # 포트는 이 컴퓨터(127.0.0.1)에만 연다. 다른 기기에서 부르려면 .env 에 BACKEND_API_KEY 를 먼저 설정할 것
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     env_file: .env
     environment:
       DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/scanner
@@ -34,8 +35,9 @@ services:
 
   redis:
     image: redis:7-alpine
+    # Redis·DB 는 비밀번호 없이(또는 기본값으로) 돌므로 절대 외부에 열지 않는다. 컨테이너끼리는 내부 네트워크로 붙는다
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
 
   db:
     image: postgres:16-alpine
@@ -44,7 +46,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: scanner
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:

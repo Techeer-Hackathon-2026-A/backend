@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.core.auth import Viewer, get_viewer, require_push, require_read
 from app.core.database import get_db
 from app.models import Finding, Fix, PullRequest, Scan
 from app.models.enums import ScanStatus
@@ -12,16 +13,27 @@ from app.schemas.api import PullRequestCreate, PullRequestOut
 router = APIRouter(tags=["pull-requests"])
 
 MAX_FIXES_PER_PR = 20
+SCAN_NOT_FOUND = "스캔을 찾을 수 없습니다"
+PR_NOT_FOUND = "PR 기록을 찾을 수 없습니다"
 
 
 @router.post("/scans/{scan_id}/pull-requests", response_model=PullRequestOut, status_code=status.HTTP_202_ACCEPTED)
-def create_pull_request(scan_id: int, body: PullRequestCreate, db: Session = Depends(get_db)) -> PullRequest:
-    """사용자가 고른 수정안으로 PR 생성을 요청한다. 실제 작업은 워커(create_pr)가 한다."""
+def create_pull_request(
+    scan_id: int,
+    body: PullRequestCreate,
+    db: Session = Depends(get_db),
+    viewer: Viewer | None = Depends(get_viewer),
+) -> PullRequest:
+    """사용자가 고른 수정안으로 PR 생성을 요청한다. 실제 작업은 워커(create_pr)가 한다.
+
+    PR 은 서버 토큰으로 올라가므로 요청한 사람이 그 레포에 푸시할 수 있어야 한다.
+    """
     from app.workers.tasks import create_pr_task
 
     scan = db.get(Scan, scan_id)
     if scan is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "스캔을 찾을 수 없습니다")
+        raise HTTPException(status.HTTP_404_NOT_FOUND, SCAN_NOT_FOUND)
+    require_push(viewer, scan.project, SCAN_NOT_FOUND)
     if scan.status != ScanStatus.COMPLETED or not scan.commit_sha:
         raise HTTPException(status.HTTP_409_CONFLICT, "완료된 스캔에서만 PR을 만들 수 있습니다")
 
@@ -54,16 +66,23 @@ def create_pull_request(scan_id: int, body: PullRequestCreate, db: Session = Dep
 
 
 @router.get("/scans/{scan_id}/pull-requests", response_model=list[PullRequestOut])
-def list_pull_requests(scan_id: int, db: Session = Depends(get_db)) -> list[PullRequest]:
-    if db.get(Scan, scan_id) is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "스캔을 찾을 수 없습니다")
+def list_pull_requests(
+    scan_id: int, db: Session = Depends(get_db), viewer: Viewer | None = Depends(get_viewer)
+) -> list[PullRequest]:
+    scan = db.get(Scan, scan_id)
+    if scan is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, SCAN_NOT_FOUND)
+    require_read(viewer, scan.project, SCAN_NOT_FOUND)
     return list(db.scalars(select(PullRequest).where(PullRequest.scan_id == scan_id).order_by(PullRequest.id.desc())))
 
 
 @router.get("/pull-requests/{pull_request_id}", response_model=PullRequestOut)
-def get_pull_request(pull_request_id: int, db: Session = Depends(get_db)) -> PullRequest:
+def get_pull_request(
+    pull_request_id: int, db: Session = Depends(get_db), viewer: Viewer | None = Depends(get_viewer)
+) -> PullRequest:
     """PR 생성 상태 폴링용 (pending → created | failed)."""
     pr = db.get(PullRequest, pull_request_id)
     if pr is None:
-        raise HTTPException(status.HTTP_404_NOT_FOUND, "PR 기록을 찾을 수 없습니다")
+        raise HTTPException(status.HTTP_404_NOT_FOUND, PR_NOT_FOUND)
+    require_read(viewer, pr.scan.project, PR_NOT_FOUND)
     return pr

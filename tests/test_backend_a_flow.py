@@ -166,12 +166,15 @@ def test_pull_request_api_validation(client, scanned, no_queue):
         db.commit()
         fix_id = fix.id
 
-    url = f"/api/v1/scans/{scanned.id}/pull-requests"
-    assert client.post(url, json={"fix_ids": []}).status_code == 400
-    assert client.post(url, json={"fix_ids": [999999]}).status_code == 400
-    assert client.post("/api/v1/scans/999999/pull-requests", json={"fix_ids": [fix_id]}).status_code == 404
+    from tests.conftest import OWNER
 
-    created = client.post(url, json={"fix_ids": [fix_id, fix_id]})
+    url = f"/api/v1/scans/{scanned.id}/pull-requests"
+    assert client.post(url, json={"fix_ids": []}, headers=OWNER).status_code == 400
+    assert client.post(url, json={"fix_ids": [999999]}, headers=OWNER).status_code == 400
+    missing = "/api/v1/scans/999999/pull-requests"
+    assert client.post(missing, json={"fix_ids": [fix_id]}, headers=OWNER).status_code == 404
+
+    created = client.post(url, json={"fix_ids": [fix_id, fix_id]}, headers=OWNER)
     assert created.status_code == 202
     body = created.json()
     assert body["fix_ids"] == [fix_id] and body["status"] == "pending"
